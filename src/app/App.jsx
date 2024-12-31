@@ -5,6 +5,10 @@ import Searchbar from "./components/searchbar/Searchbar";
 import Tabs from "./components/tabs/Tabs";
 
 function App() {
+  let tabsList = ["All", "Documentory", "Comedy", "Horror", "Crime"];
+
+  let list = tabsList.map((tab) => (tab = { title: tab, active: false }));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,9 +16,7 @@ function App() {
       </header>
       <section>
         <Searchbar initialSearch=""></Searchbar>
-        <Tabs
-          tabsList={["All", "Documentory", "Comedy", "Horror", "Crime"]}
-        ></Tabs>
+        <Tabs list={list}></Tabs>
         <div className="movieList">
           <Counter initialCount="3"></Counter>
 
