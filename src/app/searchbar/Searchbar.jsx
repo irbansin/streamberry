@@ -12,10 +12,12 @@ export default function Searchbar(props) {
   }
 
   function handleInputChange(event) {
+    event.preventDefault();
     setSearch(event.target.value);
   }
 
   function handleKeyUp(event) {
+    event.preventDefault();
     if (event.key === "Enter") {
       onSearch(event);
     }
