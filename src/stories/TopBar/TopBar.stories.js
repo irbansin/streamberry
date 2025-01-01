@@ -1,8 +1,8 @@
-import { Header } from "./Header";
+import { TopBar } from "./TopBar";
 
 export default {
-  title: "Components/Header",
-  component: Header,
+  title: "Components/TopBar",
+  component: TopBar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
@@ -13,7 +13,7 @@ export default {
 
 export const LoggedIn = {
   args: {
-    title: "My Header",
+    title: "My TopBar",
     imgAddress: "https://via.placeholder.com/150",
     imgAltText: "Placeholder image",
     user: {
@@ -28,7 +28,7 @@ export const LoggedIn = {
 
 export const LoggedOut = {
   args: {
-    title: "My Header",
+    title: "My TopBar",
     imgAddress: "https://via.placeholder.com/150",
     imgAltText: "Placeholder image",
     onLogin: () => alert("Login"),

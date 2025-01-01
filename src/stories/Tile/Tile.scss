@@ -1,11 +1,31 @@
+@import "../assets/styles/variables.scss";
+
 .tile {
-  border: 1px solid #ccc;
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
+  background-color: $background-color;
   .tile__image {
     width: 100%;
+  }
+  .tile__content {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .tile__title {
+    color: $primary-color;
+  }
+  .tile__tags {
+    color: $primary-color;
+  }
+  .tile__metaText {
+    color: $primary-color;
+  }
+
+  .tile__description {
+    color: $primary-font-color;
   }
 }

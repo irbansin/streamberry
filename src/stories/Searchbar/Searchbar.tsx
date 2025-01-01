@@ -22,27 +22,24 @@ export default function Searchbar({ initialSearchValue, search }) {
   }
 
   return (
-    <>
-      <div className={styles.title}>Find Your Movies</div>
-      <div className={styles.searchbar}>
-        <input
-          type="text"
-          placeholder="What do you want to watch?"
-          value={searchValue}
-          onChange={handleChange}
-          onKeyUp={handleKeyUp}
-          data-testid="searchValue-input"
-        />
-        <Button
-          primary={true}
-          label={"Search"}
-          backgroundColor={"#f65261"}
-          size={"medium"}
-          onClick={() => search(searchValue)}
-          data-testid="searchButton"
-        ></Button>
-      </div>
-    </>
+    <div className={styles.searchbar}>
+      <input
+        type="text"
+        placeholder="What do you want to watch?"
+        value={searchValue}
+        onChange={handleChange}
+        onKeyUp={handleKeyUp}
+        data-testid="searchValue-input"
+      />
+      <Button
+        primary={true}
+        label={"Search"}
+        backgroundColor={"#f65261"}
+        size={"medium"}
+        onClick={() => search(searchValue)}
+        data-testid="searchButton"
+      ></Button>
+    </div>
   );
 }
 

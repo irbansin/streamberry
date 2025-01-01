@@ -14,10 +14,12 @@ export default function Tabs({ tabsList }) {
   return (
     <div className={styles.tabsContainer} data-testid="tabs">
       {tabsList.map((tab, index) => {
+        console.log(tab);
+
         return (
           <Tab
-            tab={tab}
-            key={index}
+            tab={tab.name}
+            key={tab.id}
             isActive={index === activeTab}
             selectTab={() => selectTab(index)}
           ></Tab>

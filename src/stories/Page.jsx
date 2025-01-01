@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header } from "./Header/Header";
+import { TopBar } from "./TopBar/TopBar";
 import "./page.css";
 
 export const Page = () => {
@@ -8,7 +8,7 @@ export const Page = () => {
 
   return (
     <article>
-      <Header
+      <TopBar
         user={user}
         onLogin={() => setUser({ name: "Jane Doe" })}
         onLogout={() => setUser(undefined)}

@@ -3,14 +3,33 @@ import PropTypes from "prop-types";
 
 import "./Tile.scss";
 
-export default function Tile({ title, description, image, altText }) {
+export default function Tile({
+  title,
+  description,
+  image,
+  altText,
+  tags,
+  metaText,
+}) {
   return (
     <div className="tile">
       <div className="tile__image">
         <img src={image} alt={altText} />
       </div>
       <div className="tile__content">
-        <h3 className="tile__title">{title}</h3>
+        <div className="flex justify-between">
+          <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
+            {title}
+          </h3>
+        </div>
+        <div className="flex justify-between">
+          <div className="tile__tags ">
+            {tags.map((item, index) => {
+              return <span key={index}>{item} </span>;
+            })}
+          </div>
+          <div className="tile__metaText ">{metaText}</div>
+        </div>
         <p className="tile__description">{description}</p>
       </div>
     </div>
@@ -20,8 +39,7 @@ export default function Tile({ title, description, image, altText }) {
 Tile.defaultProps = {
   title: "Title",
   altText: "Image",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description: "",
   image: "https://via.placeholder.com/300x300",
 };
 
