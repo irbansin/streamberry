@@ -4,8 +4,8 @@
   max-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   background-color: $background-color;
   .tile__image {
     width: 100%;

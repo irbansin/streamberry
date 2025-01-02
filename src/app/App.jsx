@@ -4,36 +4,42 @@ import Searchbar from "../stories/Searchbar/Searchbar.tsx";
 import Tabs from "../stories/Tabs/Tabs.tsx";
 import { useEffect, useState } from "react";
 import Tile from "../stories/Tile/Tile.tsx";
-import axios from "axios";
-
-function search(searchTerm) {
-  console.log("searching for", searchTerm);
-}
+import {
+  getAllMovies,
+  getMoviesByGenre,
+  getMoviesBySearchTerm,
+} from "./services/movies.service.ts";
+import { getAllGenres } from "./services/genres.service.ts";
 
 function App() {
   const [movieList, setMovielist] = useState([]);
   const [genreList, setGenreList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=1f54bd990f1cdfb230adb312546d765d"
-      )
+    getAllMovies()
       .then((response) => {
-        setMovielist(response.data.results);
+        setMovielist(response);
       })
       .catch((error) => console.log(error));
-    axios
-      .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=1f54bd990f1cdfb230adb312546d765d"
-      )
+    getAllGenres()
       .then((response) => {
-        console.log(response);
-        setGenreList(response.data.genres);
+        setGenreList(response);
       })
       .catch((error) => console.log(error));
   }, []);
-  // let list = ["All", "Documentory", "Comedy", "Horror", "Crime"];
+
+  function updateMovieList(genreId) {
+    getMoviesByGenre(genreId)
+      .then((response) => {
+        setMovielist(response);
+      })
+      .catch((error) => console.log(error));
+  }
+  function search(searchTerm) {
+    getMoviesBySearchTerm(searchTerm).then((response) => {
+      setMovielist(response);
+    });
+  }
 
   return (
     <div className="App">
@@ -42,7 +48,7 @@ function App() {
         <TopBar title="ZOLO Movies"></TopBar>
         <div className="title">Find Your Movies</div>
         <Searchbar initialSearch="" search={search}></Searchbar>
-        <Tabs tabsList={genreList}></Tabs>
+        <Tabs tabsList={genreList} triggerFunction={updateMovieList}></Tabs>
       </header>
       <div className="w-full flex justify-evenly	 content">
         <div className="grid grid-cols-3 grid-rows-3 gap-4">

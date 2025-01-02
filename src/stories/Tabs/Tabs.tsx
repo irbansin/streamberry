@@ -3,25 +3,23 @@ import styles from "./Tabs.module.scss";
 import React from "react";
 import Tab from "./tab/tab.tsx";
 import PropTypes from "prop-types";
-export default function Tabs({ tabsList }) {
+export default function Tabs({ tabsList, triggerFunction }) {
   let [activeTab, setActiveTab] = useState(0);
 
-  function selectTab(i) {
-    // toggle isActive tabs on click
-    setActiveTab(i);
+  function selectTab(id) {
+    setActiveTab(id);
+    triggerFunction(id);
   }
 
   return (
     <div className={styles.tabsContainer} data-testid="tabs">
       {tabsList.map((tab, index) => {
-        console.log(tab);
-
         return (
           <Tab
-            tab={tab.name}
+            tab={tab}
             key={tab.id}
-            isActive={index === activeTab}
-            selectTab={() => selectTab(index)}
+            isActive={tab.id === activeTab}
+            selectTab={() => selectTab(tab.id)}
           ></Tab>
         );
       })}
