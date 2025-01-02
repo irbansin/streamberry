@@ -1,0 +1,57 @@
+.searchbar {
+  width: 80%;
+  height: 50px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    width: 80%;
+    height: 100%;
+    margin: 5px;
+    background-color: #323232cc;
+    padding: 0 20px;
+    color: white;
+    border: none;
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: rgb(163, 159, 159);
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: rgb(163, 159, 159);
+    }
+
+    &::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: rgb(163, 159, 159);
+    }
+    border-radius: 4px;
+    &:focus {
+      outline: none !important;
+      box-shadow: 0 0 10px grey;
+    }
+  }
+
+  button {
+    width: 20%;
+    height: 100%;
+    margin: 5px;
+    color: white;
+    background-color: #f65261;
+    border: #f65261;
+    border-radius: 4px;
+    padding: 1px;
+    &:hover {
+      background-color: #f66f7acc;
+      border: #f66f7acc;
+    }
+    &:active {
+      background-color: #f65261;
+      border: #f65261;
+    }
+  }
+}

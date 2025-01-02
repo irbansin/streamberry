@@ -1,0 +1,23 @@
+html {
+  background-image: url("../assets/background.png");
+  body {
+    background-color: black;
+    opacity: 0.9;
+    height: 100vh;
+    header {
+      height: 20%;
+      padding: 20px;
+      color: #f65261;
+    }
+    content {
+      height: 80%;
+      display: block;
+      .movieList {
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+}

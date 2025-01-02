@@ -1,6 +1,7 @@
-import "./App.css";
+import "./App.scss";
 import CounterDepr from "./counter-class-comp/Counter-class-comp";
 import Counter from "./counter/Counter";
+import Searchbar from "./searchbar/Searchbar";
 
 function App() {
   return (
@@ -8,8 +9,14 @@ function App() {
       <header className="App-header">
         <h1> Streamberry </h1>
       </header>
-      <Counter initialCount="3"></Counter>
-      <CounterDepr initialCount="3"></CounterDepr>
+      <content>
+        <Searchbar></Searchbar>
+        <div className="movieList">
+          <Counter initialCount="3"></Counter>
+
+          <CounterDepr initialCount="3"></CounterDepr>
+        </div>
+      </content>
     </div>
   );
 }
