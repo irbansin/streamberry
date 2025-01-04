@@ -15,25 +15,35 @@ function Counter({ initialCount }) {
 
   function increaseCount() {
     setCounter(counter + 1);
-    console.log("counter", counter);
   }
 
   function decreaseCount() {
     if (counter > 0) {
       setCounter(counter - 1);
     }
-    console.log("counter", counter);
   }
 
   return (
     <div>
-      <label className={styles.label}>Counter</label>
+      <label className={styles.label} data-testid="label">
+        Counter
+      </label>
       <div className={styles.roundedBorder}>
-        <button className={styles.primary} onClick={decreaseCount}>
+        <button
+          className={styles.primary}
+          onClick={decreaseCount}
+          data-testid="decrement-button"
+        >
           -
         </button>
-        <span className={styles.counter}> {counter}</span>
-        <button className={styles.primary} onClick={increaseCount}>
+        <span className={styles.counter} data-testid="counter">
+          {counter}
+        </span>
+        <button
+          className={styles.primary}
+          onClick={increaseCount}
+          data-testid="increment-button"
+        >
           +
         </button>
       </div>

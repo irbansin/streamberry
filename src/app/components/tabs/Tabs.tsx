@@ -6,23 +6,20 @@ import Tab from "./tab/tab.tsx";
 export default function Tabs({ tabsList }) {
   let [activeTab, setActiveTab] = useState(0);
 
-  function handleClick(i) {
-    // 👇️ toggle isActive tabs on click
+  function selectTab(i) {
+    // toggle isActive tabs on click
     setActiveTab(i);
-    alert(tabsList[i] + " clicked");
-
-    return i;
   }
 
   return (
-    <div className={styles.tabsContainer}>
+    <div className={styles.tabsContainer} data-testid="tabs">
       {tabsList.map((tab, index) => {
         return (
           <Tab
             tab={tab}
             key={index}
             isActive={index === activeTab}
-            click={() => handleClick(index)}
+            selectTab={() => selectTab(index)}
           ></Tab>
         );
       })}

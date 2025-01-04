@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { cleanup, render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+afterAll(() => {
+  cleanup();
+});
+
+test("App Name", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText("Zolo Movies");
   expect(linkElement).toBeInTheDocument();
 });

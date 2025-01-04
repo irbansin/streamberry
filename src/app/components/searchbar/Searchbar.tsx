@@ -2,27 +2,20 @@ import styles from "./Searchbar.module.scss";
 import React from "react";
 import { useState } from "react";
 
-export default function Searchbar({ initialSearch }) {
-  const [search, setSearch] = useState(initialSearch || "");
+export default function Searchbar({ initialSearchValue, search }) {
+  const [searchValue, setSearchValue] = useState(initialSearchValue || "");
 
-  function onSearch(event): string {
+  function handleChange(event): void {
     event.preventDefault();
-    console.log("search", event.target.value);
-
-    setSearch(event.target.value);
-    alert(search);
-    return search;
-  }
-
-  function handleInputChange(event): void {
-    event.preventDefault();
-    setSearch(event.target.value);
-  }
-
-  function handleKeyUp(event): void {
-    event.preventDefault();
+    setSearchValue(event.target.value);
     if (event.key === "Enter") {
-      onSearch(event);
+      search(searchValue);
+    }
+  }
+
+  function handleKeyUp(event) {
+    if (event.key === "Enter") {
+      search(searchValue);
     }
   }
 
@@ -33,11 +26,12 @@ export default function Searchbar({ initialSearch }) {
         <input
           type="text"
           placeholder="What do you want to watch?"
-          value={search}
-          onChange={handleInputChange}
+          value={searchValue}
+          onChange={handleChange}
           onKeyUp={handleKeyUp}
+          data-testid="searchValue-input"
         />
-        <button value={search} onClick={onSearch}>
+        <button onClick={() => search(searchValue)} data-testid="searchButton">
           Search
         </button>
       </div>
