@@ -1,7 +1,8 @@
 import styles from "./Searchbar.module.scss";
 import React from "react";
 import { useState } from "react";
-import { Button } from "../../../stories/Button/Button";
+import { Button } from "../Button/Button";
+import PropTypes from "prop-types";
 
 export default function Searchbar({ initialSearchValue, search }) {
   const [searchValue, setSearchValue] = useState(initialSearchValue || "");
@@ -44,3 +45,13 @@ export default function Searchbar({ initialSearchValue, search }) {
     </>
   );
 }
+
+Searchbar.defaultProps = {
+  initialSearchValue: "",
+  search: () => {},
+};
+
+Searchbar.propTypes = {
+  initialSearchValue: PropTypes.string,
+  search: PropTypes.func,
+};

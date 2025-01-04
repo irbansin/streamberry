@@ -1,8 +1,8 @@
 import { Header } from "../stories/Header/Header";
 import "./App.scss";
-import Counter from "./components/counter/Counter.tsx";
-import Searchbar from "./components/searchbar/Searchbar.tsx";
-import Tabs from "./components/tabs/Tabs.tsx";
+import Counter from "../stories/Counter/Counter.tsx";
+import Searchbar from "../stories/Searchbar/Searchbar.tsx";
+import Tabs from "../stories/Tabs/Tabs.tsx";
 
 function search(searchTerm) {
   console.log("searching for", searchTerm);
