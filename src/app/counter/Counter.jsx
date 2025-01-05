@@ -2,7 +2,7 @@ import "./Counter.scss";
 import { useState } from "react";
 
 function Counter(props) {
-  const [counter, setCounter] = useState(props.initialCount || 0);
+  const [counter, setCounter] = useState(Number(props.initialCount) || 0);
   /*
     useState is a hook that allows us to use state in a functional component.
     useState returns an array with two elements:
