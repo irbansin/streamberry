@@ -5,8 +5,10 @@ describe("Counter Component", () => {
   });
 
   it("should display the initial count from the page", () => {
+    // Get the initial count from the page
     cy.get('[data-testid="counter"]').then(($counter) => {
       initialCount = Number($counter.text());
+      // Check if the initial count is 0
       cy.get('[data-testid="counter"]').should("contain", initialCount);
     });
   });
