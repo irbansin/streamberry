@@ -25,7 +25,7 @@ function Counter(props) {
   }
 
   return (
-    <counter>
+    <div>
       <label className={styles.label}>Counter</label>
       <div className={styles.roundedBorder}>
         <button className={styles.primary} onClick={decreaseCount}>
@@ -36,7 +36,7 @@ function Counter(props) {
           +
         </button>
       </div>
-    </counter>
+    </div>
   );
 }
 export default Counter;

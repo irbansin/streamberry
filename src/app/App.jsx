@@ -9,14 +9,14 @@ function App() {
       <header className="App-header">
         <h1> Streamberry </h1>
       </header>
-      <content>
+      <section>
         <Searchbar></Searchbar>
         <div className="movieList">
           <Counter initialCount="3"></Counter>
 
           <CounterDepr initialCount="3"></CounterDepr>
         </div>
-      </content>
+      </section>
     </div>
   );
 }
