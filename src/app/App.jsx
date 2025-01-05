@@ -1,4 +1,5 @@
 import "./App.css";
+import Counter from "./counter/Counter";
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header className="App-header">
         <h1> streamberry </h1>
       </header>
+      <Counter></Counter>
     </div>
   );
 }
