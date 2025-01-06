@@ -1,10 +1,9 @@
 import React from "react";
-import { CounterProps } from "../../models/counterProps.interface";
 import styles from "./Counter.module.scss";
 import { useState } from "react";
 
-function Counter(props: CounterProps) {
-  const [counter, setCounter] = useState(Number(props.initialCount) || 0);
+function Counter({ initialCount }) {
+  const [counter, setCounter] = useState(Number(initialCount) || 0);
   /*
     useState is a hook that allows us to use state in a functional component.
     useState returns an array with two elements:

@@ -1,28 +1,27 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import React from "react";
-import { TabsProps } from "../../models/tabsProps.interface";
 
-export default function Tabs(props: TabsProps) {
-  let [tabsList, setTabsList] = useState(props.tabsList);
+export default function Tabs({ tabsList }) {
+  let [tabs, settabs] = useState(tabsList);
 
   function handleClick(event, i) {
-    // 👇️ toggle isActive tabsList on click
-    alert(tabsList[i].title + " clicked")
-    tabsList.forEach((tab, index) => {
+    // 👇️ toggle isActive tabs on click
+    alert(tabs[i].title + " clicked");
+    tabs.forEach((tab, index) => {
       if (index === i) {
         tab.active = true;
       } else {
         tab.active = false;
       }
     });
-    setTabsList([...tabsList]);
-    return i
+    settabs([...tabs]);
+    return i;
   }
 
   return (
     <div className={styles.tabsContainer}>
-      {tabsList.map((tab, index) => {
+      {tabs.map((tab, index) => {
         return (
           <div
             key={index}

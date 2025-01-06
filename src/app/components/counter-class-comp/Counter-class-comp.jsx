@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Counter-class-comp.module.scss";
 
 export default class CounterDepr extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor({ initialCount }) {
+    super({ initialCount });
 
     this.state = {
-      counter: Number(this.props.initialCount) || 0,
+      counter: Number({ initialCount }) || 0,
     };
   }
   increaseCount = () => {

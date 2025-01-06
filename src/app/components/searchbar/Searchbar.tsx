@@ -1,10 +1,9 @@
 import styles from "./Searchbar.module.scss";
 import React from "react";
 import { useState } from "react";
-import { SearchbarProps } from "../../models/searchbarProps.interface";
 
-export default function Searchbar(props: SearchbarProps) {
-  const [search, setSearch] = useState(props.initialSearch || "");
+export default function Searchbar({ initialSearch }) {
+  const [search, setSearch] = useState(initialSearch || "");
 
   function onSearch(event): string {
     event.preventDefault();
