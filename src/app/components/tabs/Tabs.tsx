@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import React from "react";
-import { TabsProps } from "../../models/tabsPeops.interface";
+import { TabsProps } from "../../models/tabsProps.interface";
 
 export default function Tabs(props: TabsProps) {
   let [tabsList, setTabsList] = useState(props.tabsList);

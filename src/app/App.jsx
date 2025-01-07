@@ -1,7 +1,7 @@
 import "./App.scss";
 import CounterDepr from "./components/counter-class-comp/Counter-class-comp";
-import Counter from "./components/counter/Counter";
-import Searchbar from "./components/searchbar/Searchbar";
+import Counter from "./components/counter/Counter.tsx";
+import Searchbar from "./components/searchbar/Searchbar.tsx";
 import Tabs from "./components/tabs/Tabs.tsx";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Streamberry </h1>
+        <h1> Zolo Movies </h1>
       </header>
       <section>
         <Searchbar initialSearch=""></Searchbar>
