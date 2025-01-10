@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1> streamberry </h1>
       </header>
-      <Counter></Counter>
+      <Counter initialCount="3"></Counter>
     </div>
   );
 }
