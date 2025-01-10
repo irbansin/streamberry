@@ -2,7 +2,7 @@ import "./App.scss";
 import CounterDepr from "./components/counter-class-comp/Counter-class-comp";
 import Counter from "./components/counter/Counter";
 import Searchbar from "./components/searchbar/Searchbar";
-import Tabs from "./components/tabs/Tabs";
+import Tabs from "./components/tabs/Tabs.tsx";
 
 function App() {
   let tabsList = ["All", "Documentory", "Comedy", "Horror", "Crime"];
@@ -16,7 +16,7 @@ function App() {
       </header>
       <section>
         <Searchbar initialSearch=""></Searchbar>
-        <Tabs list={list}></Tabs>
+        <Tabs tabsList={list}></Tabs>
         <div className="movieList">
           <Counter initialCount="3"></Counter>
 

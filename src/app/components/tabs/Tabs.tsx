@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
+import React from "react";
+import { TabsProps } from "../../models/tabsPeops.interface";
 
-export default function Tabs(props) {
-  let [tabsList, setTabsList] = useState(props.list);
+export default function Tabs(props: TabsProps) {
+  let [tabsList, setTabsList] = useState(props.tabsList);
 
   function handleClick(event, i) {
     // 👇️ toggle isActive tabsList on click
