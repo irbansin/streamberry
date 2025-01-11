@@ -38,6 +38,7 @@ export default function Searchbar({ initialSearchValue, search }) {
           backgroundColor={"#f65261"}
           size={"medium"}
           onClick={() => search(searchValue)}
+          data-testid="searchButton"
         ></Button>
       </div>
     </>

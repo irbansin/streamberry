@@ -7,6 +7,6 @@ afterAll(() => {
 
 test("App Name", () => {
   render(<App />);
-  const linkElement = screen.getByText("Zolo Movies");
+  const linkElement = screen.getByText("ZOLO Movies");
   expect(linkElement).toBeInTheDocument();
 });

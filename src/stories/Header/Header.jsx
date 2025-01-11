@@ -67,11 +67,11 @@ export const Header = ({
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }),
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  onCreateAccount: PropTypes.func.isRequired,
+  onLogin: PropTypes.func,
+  onLogout: PropTypes.func,
+  onCreateAccount: PropTypes.func,
   loginEnabled: PropTypes.bool,
 };
 
