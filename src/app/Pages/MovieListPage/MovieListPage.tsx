@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { TopBar } from "cryll-ui";
-import { Searchbar } from "cryll-ui";
+import { Autocomplete, TopBar } from "cryll-ui";
 import { Select } from "cryll-ui";
 import { Tabs } from "cryll-ui";
 import { Tile } from "cryll-ui";
@@ -150,10 +149,10 @@ export default function MovieListPage() {
         </div>
         <div className="search">
           <div className="title">Find Your Movies</div>
-          <Searchbar
+          <Autocomplete
             initialSearchValue={searchParams.get("search") || ""}
             search={search}
-          ></Searchbar>
+          ></Autocomplete>
         </div>
 
         <div className="flex flex-row justify-between w-full flex-wrap border-bottom">
