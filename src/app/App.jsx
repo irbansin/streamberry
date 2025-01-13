@@ -8,6 +8,7 @@ function App() {
   let tabsList = ["All", "Documentory", "Comedy", "Horror", "Crime"];
 
   let list = tabsList.map((tab) => (tab = { title: tab, active: false }));
+  list[0].active = true;
 
   return (
     <div className="App">

@@ -8,6 +8,7 @@ export default function Tabs(props: TabsProps) {
 
   function handleClick(event, i) {
     // 👇️ toggle isActive tabsList on click
+    alert(tabsList[i].title + " clicked")
     tabsList.forEach((tab, index) => {
       if (index === i) {
         tab.active = true;
