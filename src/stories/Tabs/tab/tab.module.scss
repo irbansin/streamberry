@@ -1,6 +1,9 @@
+@import "../../variables.scss";
+
 .tab {
-  color: #fff;
-  font-size: 20px;
+  color: $primary-font-color;
+  background-color: $foreground-color;
+  font-size: large;
   height: 100%;
   padding: 0 10px;
   width: fit-content;
@@ -9,17 +12,12 @@
   justify-content: center;
   cursor: pointer;
   &.active {
-    color: #fff;
-    border-bottom: 2px solid #fff;
+    color: $primary-font-color;
+    border-bottom: 2px solid $foreground-color-light;
   }
   &:hover {
-    background-color: #565555;
-    color: #000;
-    border-bottom: 2px solid #f65261;
+    background-color: $foreground-color-light;
+    color: $background-color;
+    border-bottom: 2px solid $primary-color;
   }
-}
-
-.active {
-  color: #fff;
-  border-bottom: 2px solid #fff;
 }

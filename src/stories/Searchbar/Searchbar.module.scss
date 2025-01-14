@@ -1,8 +1,10 @@
+@import "../variables.scss";
+
 .title {
   font-size: 40px;
   font-weight: 300;
   font-style: Montserrat;
-  color: white;
+  color: $primary-font-color;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -19,30 +21,30 @@
     width: 80%;
     height: 100%;
     margin: 5px;
-    background-color: #323232cc;
+    background-color: $foreground-color;
     padding: 0 20px;
-    color: white;
+    color: $primary-font-color;
     border: none;
 
     &::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: rgb(163, 159, 159);
+      color: $foreground-color-light;
       opacity: 1; /* Firefox */
     }
 
     &:-ms-input-placeholder {
       /* Internet Explorer 10-11 */
-      color: rgb(163, 159, 159);
+      color: $foreground-color-light;
     }
 
     &::-ms-input-placeholder {
       /* Microsoft Edge */
-      color: rgb(163, 159, 159);
+      color: $foreground-color-light;
     }
     border-radius: 4px;
     &:focus {
       outline: none !important;
-      box-shadow: 0 0 10px grey;
+      box-shadow: 0 0 10px $foreground-color-light;
     }
   }
 
@@ -50,9 +52,9 @@
     width: 20%;
     height: 100%;
     margin: 5px;
-    color: white;
-    background-color: #f65261;
-    border: #f65261;
+    color: $primary-font-color;
+    background-color: $primary-color;
+    border: $primary-color;
     border-radius: 4px;
     padding: 1px;
   }

@@ -13,10 +13,30 @@ export default {
 
 export const LoggedIn = {
   args: {
+    title: "My Header",
+    imgAddress: "https://via.placeholder.com/150",
+    imgAltText: "Placeholder image",
     user: {
       name: "Jane Doe",
     },
+    onLogin: () => alert("Login"),
+    onLogout: () => alert("Logout"),
+    onCreateAccount: () => alert("Create Account"),
+    loginEnabled: true,
   },
 };
 
-export const LoggedOut = {};
+export const LoggedOut = {
+  args: {
+    title: "My Header",
+    imgAddress: "https://via.placeholder.com/150",
+    imgAltText: "Placeholder image",
+    user: {
+      name: "Jane Doe",
+    },
+    onLogin: () => alert("Login"),
+    onLogout: () => alert("Logout"),
+    onCreateAccount: () => alert("Create Account"),
+    loginEnabled: true,
+  },
+};

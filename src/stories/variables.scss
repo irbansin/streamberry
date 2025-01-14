@@ -1,0 +1,46 @@
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
