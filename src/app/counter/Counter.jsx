@@ -26,10 +26,16 @@ function Counter(props) {
 
   return (
     <counter>
-      <label>Counter</label>
-      <button onClick={decreaseCount}>-</button>
-      <span className={styles.counter}> {counter}</span>
-      <button onClick={increaseCount}> +</button>
+      <label className={styles.label}>Counter</label>
+      <div className={styles.roundedBorder}>
+        <button className={styles.primary} onClick={decreaseCount}>
+          -
+        </button>
+        <span className={styles.counter}> {counter}</span>
+        <button className={styles.primary} onClick={increaseCount}>
+          +
+        </button>
+      </div>
     </counter>
   );
 }

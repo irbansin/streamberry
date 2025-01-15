@@ -1,13 +1,27 @@
-button {
+.label {
+  color: #f65261;
+  margin: 5px;
+  display: block;
+}
+
+.primary {
   border: 2px solid #f65261;
   background-color: #f65261;
   border-radius: 50%;
   color: white;
+  margin: 5px;
+  display: inline-block;
 }
-counter {
-  display: block;
-}
+
 .counter {
   color: #f65261;
   margin: 0 10px;
+  display: inline-block;
+}
+
+.roundedBorder {
+  border: 1px solid #f65261;
+  padding: 2px;
+  border-radius: 20px;
+  width: fit-content;
 }
