@@ -5,10 +5,7 @@ import Searchbar from "./components/searchbar/Searchbar.tsx";
 import Tabs from "./components/tabs/Tabs.tsx";
 
 function App() {
-  let tabsList = ["All", "Documentory", "Comedy", "Horror", "Crime"];
-
-  let list = tabsList.map((tab) => (tab = { title: tab, active: false }));
-  list[0].active = true;
+  let list = ["All", "Documentory", "Comedy", "Horror", "Crime"];
 
   return (
     <div className="App">
