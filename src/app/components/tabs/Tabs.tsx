@@ -16,6 +16,7 @@ export default function Tabs(props: TabsProps) {
       }
     });
     setTabsList([...tabsList]);
+    return i
   }
 
   return (
