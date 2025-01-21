@@ -2,7 +2,7 @@ import styles from "./Searchbar.module.scss";
 import { useState } from "react";
 
 export default function Searchbar(props) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(props.initialSearch || "");
 
   function onSearch(event) {
     event.preventDefault();
@@ -37,11 +37,8 @@ export default function Searchbar(props) {
           Search
         </button>
       </div>
-      <table>
-        <tr>
-          <td>{search}</td>
-        </tr>
-      </table>
+
+      <div style={{ color: "#fff" }}>{search}</div>
     </>
   );
 }
