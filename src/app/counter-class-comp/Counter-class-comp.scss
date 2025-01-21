@@ -1,12 +1,22 @@
+counter {
+  display: block;
+  margin: 10px;
+}
+
+label {
+  color: #f65261;
+  margin: 5px;
+  display: block;
+}
+
 button {
   border: 2px solid #f65261;
   background-color: #f65261;
   border-radius: 50%;
   color: white;
+  margin: 5px;
 }
-counter {
-  display: block;
-}
+
 .counter {
   color: #f65261;
   margin: 0 10px;

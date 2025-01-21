@@ -25,11 +25,12 @@ function Counter(props) {
   }
 
   return (
-    <>
+    <counter>
+      <label>Counter</label>
       <button onClick={decreaseCount}>-</button>
       <span class="counter"> {counter}</span>
       <button onClick={increaseCount}> +</button>
-    </>
+    </counter>
   );
 }
 export default Counter;
