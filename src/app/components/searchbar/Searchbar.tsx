@@ -6,7 +6,7 @@ import { SearchbarProps } from "../../models/searchbarProps.interface";
 export default function Searchbar(props: SearchbarProps) {
   const [search, setSearch] = useState(props.initialSearch || "");
 
-  function onSearch(event): string{
+  function onSearch(event): string {
     event.preventDefault();
     console.log("search", event.target.value);
 
@@ -29,6 +29,7 @@ export default function Searchbar(props: SearchbarProps) {
 
   return (
     <>
+      <div className={styles.title}>Find Your Movies</div>
       <div className={styles.searchbar}>
         <input
           type="text"
