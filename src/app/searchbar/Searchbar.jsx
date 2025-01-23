@@ -9,6 +9,7 @@ export default function Searchbar(props) {
     console.log("search", event.target.value);
 
     setSearch(event.target.value);
+    alert(search);
   }
 
   function handleInputChange(event) {
@@ -37,8 +38,6 @@ export default function Searchbar(props) {
           Search
         </button>
       </div>
-
-      <div style={{ color: "#fff" }}>{search}</div>
     </>
   );
 }
