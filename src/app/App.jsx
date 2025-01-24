@@ -1,7 +1,7 @@
 import "./App.scss";
-import CounterDepr from "./counter-class-comp/Counter-class-comp";
-import Counter from "./counter/Counter";
-import Searchbar from "./searchbar/Searchbar";
+import CounterDepr from "./components/counter-class-comp/Counter-class-comp";
+import Counter from "./components/counter/Counter";
+import Searchbar from "./components/searchbar/Searchbar";
 
 function App() {
   return (
