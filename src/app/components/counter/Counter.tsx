@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Counter.module.scss";
 import { useState } from "react";
 
-function Counter({ initialCount }) {
+function Counter({ initialCount, title }) {
   const [counter, setCounter] = useState(Number(initialCount) || 0);
   /*
     useState is a hook that allows us to use state in a functional component.
@@ -26,7 +26,7 @@ function Counter({ initialCount }) {
   return (
     <div>
       <label className={styles.label} data-testid="label">
-        Counter
+        {title}
       </label>
       <div className={styles.roundedBorder}>
         <button

@@ -1,6 +1,7 @@
 import styles from "./Searchbar.module.scss";
 import React from "react";
 import { useState } from "react";
+import { Button } from "../../../stories/Button/Button";
 
 export default function Searchbar({ initialSearchValue, search }) {
   const [searchValue, setSearchValue] = useState(initialSearchValue || "");
@@ -31,9 +32,13 @@ export default function Searchbar({ initialSearchValue, search }) {
           onKeyUp={handleKeyUp}
           data-testid="searchValue-input"
         />
-        <button onClick={() => search(searchValue)} data-testid="searchButton">
-          Search
-        </button>
+        <Button
+          primary={true}
+          label={"Search"}
+          backgroundColor={"#f65261"}
+          size={"medium"}
+          onClick={() => search(searchValue)}
+        ></Button>
       </div>
     </>
   );
