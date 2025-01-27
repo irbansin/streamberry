@@ -1,5 +1,5 @@
 import React from "react";
-import "./Counter-class-comp.scss";
+import styles from "./Counter-class-comp.module.scss";
 
 export default class CounterDepr extends React.Component {
   constructor(props) {
@@ -28,10 +28,14 @@ export default class CounterDepr extends React.Component {
   render() {
     return (
       <counter-class-comp>
-        <label>Counter class-comp</label>
-        <button onClick={this.decreaseCount}>-</button>
-        <span class="counter"> {this.state.counter}</span>
-        <button onClick={this.increaseCount}> +</button>
+        <label className={styles.label}>Counter class-comp</label>
+        <button className={styles.primary} onClick={this.decreaseCount}>
+          -
+        </button>
+        <span className={styles.counter}> {this.state.counter}</span>
+        <button className={styles.primary} onClick={this.increaseCount}>
+          +
+        </button>
       </counter-class-comp>
     );
   }

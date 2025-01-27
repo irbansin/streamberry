@@ -1,4 +1,4 @@
-import "./Counter.scss";
+import styles from "./Counter.module.scss";
 import { useState } from "react";
 
 function Counter(props) {
@@ -28,7 +28,7 @@ function Counter(props) {
     <counter>
       <label>Counter</label>
       <button onClick={decreaseCount}>-</button>
-      <span class="counter"> {counter}</span>
+      <span className={styles.counter}> {counter}</span>
       <button onClick={increaseCount}> +</button>
     </counter>
   );
