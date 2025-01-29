@@ -21,8 +21,6 @@ function App() {
         <Tabs tabsList={list}></Tabs>
         <div className="movieList">
           <Counter initialCount="3"></Counter>
-
-          <CounterDepr initialCount="3"></CounterDepr>
         </div>
       </section>
     </div>
