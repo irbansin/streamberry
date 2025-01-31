@@ -1,3 +1,5 @@
+@import "../assets/styles/variables.scss";
+
 header {
   position: sticky;
   top: 0;
@@ -24,25 +26,40 @@ header {
   padding: 10px;
 }
 
-.title {
-  font-size: 40px;
-  font-weight: 300;
-  font-style: Montserrat;
-  color: white;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  padding: 0 10rem;
-}
-
-.border-bottom {
-  border-bottom: 2px solid #424242;
-}
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-.searchButton {
-  color: #f65261;
+input,
+textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 30px;
+  background-color: $foreground-color;
+  padding: 0.5rem !important;
+  color: $primary-font-color;
+  border: none;
+  border-radius: 4px;
+  resize: vertical;
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $foreground-color-light;
+    opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $foreground-color-light;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $foreground-color-light;
+  }
+  &:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px $foreground-color-light;
+  }
 }

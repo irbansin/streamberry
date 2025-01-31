@@ -1,116 +1,99 @@
-import React, { useState } from "react";
-import { Input } from "cryll-ui";
+import React from "react";
 import { Button } from "cryll-ui";
-import { TextArea } from "cryll-ui";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+
+import { useFormik } from "formik";
+
 import "./MovieForm.scss";
 
-function handleSave(e: any) {
-  e.preventDefault();
-  e.stopPropagation();
-  console.log(e.target.innerText);
+import { Movie } from "../../models/Movie.interface";
+
+interface MovieformProps {
+  currentMovie: Movie;
 }
 
-function handleReset(e: any) {
-  e.preventDefault();
-  e.stopPropagation();
-  console.log(e.target.innerText);
-}
+export default function MovieForm({ currentMovie }: MovieformProps) {
+  const formik = useFormik({
+    initialValues: {
+      title: currentMovie.title || "",
+      releaseDate: currentMovie.release_date || "",
+      posterUrl: currentMovie.poster_path || "",
+      rating: currentMovie.vote_average || "",
+      overView: currentMovie.overview || "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
-export default function MovieForm({ currentMovie }) {
-  const [title, setTitle] = useState(currentMovie.title);
-  const [releaseDate, setReleaseDate] = useState(currentMovie.release_date);
-  const [posterUrl, setMovieUrl] = useState(currentMovie.poster_path);
-  const [rating, setRating] = useState(currentMovie.vote_average);
-  // const [genre, setGenre] = useState([...currentMovie.genre_ids]);
-  // const [runtime, setRuntime] = useState(currentMovie.runtime);
-  const [overView, setOverView] = useState(currentMovie.overView);
+  let editMode = false;
 
-  function handleTitle(event: any): void {
-    event.preventDefault();
-    setTitle(event.target.value);
+  if (currentMovie.id) {
+    editMode = true;
   }
-
-  function handleOverView(event: any): void {
-    event.preventDefault();
-    setOverView(event.target.value);
-  }
-
-  function handleReleaseDate(event: any): void {
-    event.preventDefault();
-    setReleaseDate(event.target.value);
-  }
-
-  function handleMovieUrl(event: any): void {
-    event.preventDefault();
-    setMovieUrl(event.target.value);
-  }
-
-  function handleRating(event: any): void {
-    event.preventDefault();
-    setRating(event.target.value);
-  }
-
-  // function handleGenre(event: any): void {
-  //   event.preventDefault();
-  //   setGenre(event.target.value);
-  // }
 
   return (
     <div className="movieForm">
-      <form onSubmit={handleSave}>
+      <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
         <div className="grid grid-cols-2 gap-6">
           <div className="flex flex-col ">
             <label>Title:</label>
-            <ErrorBoundary>
-              <Input
-                inputType={"text"}
-                placeholderText={"Title of the Movie"}
-                inputValue={title}
-                change={handleTitle}
-                keyup={handleTitle}
-                data-testid="searchValue-input"
-              ></Input>{" "}
-            </ErrorBoundary>
+            <input
+              id="title"
+              name="title"
+              type="text"
+              placeholder="Movie Title"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.title}
+            />
+
+            {formik.errors.title ? <div>{formik.errors.title}</div> : null}
           </div>
           <div className="flex flex-col ">
             <label>Release Date:</label>
-            <ErrorBoundary>
-              <Input
-                inputType={"text"}
-                placeholderText={"Release Date"}
-                inputValue={releaseDate}
-                change={handleReleaseDate}
-                keyup={handleReleaseDate}
-                data-testid="searchValue-input"
-              ></Input>{" "}
-            </ErrorBoundary>
+            <input
+              id="releaseDate"
+              name="releaseDate"
+              type="date"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.releaseDate}
+            />
+            {formik.errors.releaseDate ? (
+              <div>{formik.errors.releaseDate}</div>
+            ) : null}
           </div>
           <div className="flex flex-col ">
             <label>Movie URL:</label>
-            <ErrorBoundary>
-              <Input
-                inputType={"text"}
-                placeholderText={"URL for the movie poster"}
-                inputValue={posterUrl}
-                change={handleMovieUrl}
-                keyup={handleMovieUrl}
-                data-testid="searchValue-input"
-              ></Input>
-            </ErrorBoundary>
+            <input
+              id="posterUrl"
+              name="posterUrl"
+              type="url"
+              placeholder="www.movieurl.com/poster"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.posterUrl}
+            />
+            {formik.errors.posterUrl ? (
+              <div>{formik.errors.posterUrl}</div>
+            ) : null}
           </div>
           <div className="flex flex-col ">
             <label>Rating:</label>
-            <ErrorBoundary>
-              <Input
-                inputType={"text"}
-                placeholderText={"Movie Rating"}
-                inputValue={rating}
-                change={handleRating}
-                keyup={handleRating}
-                data-testid="searchValue-input"
-              ></Input>
-            </ErrorBoundary>
+
+            <input
+              id="rating"
+              name="rating"
+              type="number"
+              placeholder="0-10"
+              min={0}
+              max={10}
+              step={0.1}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.rating}
+            />
+            {formik.errors.rating ? <div>{formik.errors.rating}</div> : null}
           </div>
           {/* <div className="flex flex-col ">
             <label>Genre:</label>
@@ -120,7 +103,6 @@ export default function MovieForm({ currentMovie }) {
                 placeholderText={"Select Genre"}
                 inputValue={genre.join(",")}
                 change={handleGenre}
-                keyup={handleGenre}
                 data-testid="searchValue-input"
               ></Input>
             </ErrorBoundary>
@@ -128,33 +110,37 @@ export default function MovieForm({ currentMovie }) {
 
           <div className="flex flex-col ">
             <label>Overview:</label>
-            <TextArea
-              placeholderText={"What do you want to watch?"}
-              inputValue={overView}
-              change={handleOverView}
-              keyup={handleOverView}
+            <textarea
+              id="overView"
+              name="overView"
+              placeholder="Something about the movie"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.overView}
               data-testid="searchValue-input"
             />
           </div>
         </div>
+        {formik.errors.overView ? <div>{formik.errors.overView}</div> : null}
 
         <div className="flex flex-row justify-end my-6">
+          {!editMode ? (
+            <div className="mx-1">
+              <Button
+                buttonStyle="secondary"
+                buttonType="reset"
+                label={`Reset`}
+                size={"medium"}
+                data-testid="searchButton"
+              ></Button>
+            </div>
+          ) : null}
           <div className="mx-1">
             <Button
-              buttonStyle="secondary"
               buttonType="submit"
-              label={`Reset`}
-              size={"medium"}
-              click={() => handleSave}
-              data-testid="searchButton"
-            ></Button>
-          </div>{" "}
-          <div className="mx-1">
-            <Button
               buttonStyle="primary"
               label={`Save`}
               size={"medium"}
-              click={() => handleReset}
               data-testid="searchButton"
             ></Button>
           </div>
