@@ -17,6 +17,7 @@ function App() {
   const [movieList, setMovielist] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [sortBy, setSortBy] = useState("release_date.desc");
+  const [genreMap, setGenreMap] = useState({}); // [id: string]: string
 
   useEffect(() => {
     getAllMovies()
@@ -26,7 +27,14 @@ function App() {
       .catch((error) => console.log(error));
     getAllGenres()
       .then((response) => {
-        setGenreList(response.slice(0, 7));
+        console.log(response);
+        setGenreList(response);
+        let genreObj = response.reduce((obj, genre) => {
+          obj[genre.id] = genre.name;
+          return obj;
+        }, {});
+
+        setGenreMap(genreObj);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -62,7 +70,7 @@ function App() {
           <div className="grow ">
             <Tabs
               className="w-4/5"
-              tabsList={genreList}
+              tabsList={genreList.slice(0, 7)}
               triggerFunction={updateMovieList}
             ></Tabs>
           </div>
@@ -104,8 +112,8 @@ function App() {
               <Tile
                 title={movie.title}
                 imageLink={`https://image.tmdb.org/t/p/w500${posterPath}`}
-                tags={movie.genre_ids}
-                metaText={movie.release_date}
+                tags={movie.genre_ids.map((id) => genreMap[id])}
+                metaText={new Date(movie.release_date).getFullYear()}
                 badgeText={movie.vote_average}
                 key={i}
               ></Tile>

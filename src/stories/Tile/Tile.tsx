@@ -17,7 +17,7 @@ export default function Tile({
       <div className="tile__image">
         <img src={imageLink} alt={altText} />
       </div>
-      <div className="tile__content">
+      <div className="tile__content py-4 px-1">
         <div className="flex justify-between">
           <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
             {title}
@@ -27,9 +27,14 @@ export default function Tile({
           </h3>
         </div>
         <div className="flex justify-between">
-          <div className="tile__tags ">
+          <div className="tile__tags text-sm ">
             {tags.map((item, index) => {
-              return <span key={index}>{item} </span>;
+              return (
+                <span className="pr-2" key={index}>
+                  {" "}
+                  {item}{" "}
+                </span>
+              );
             })}
           </div>
           <div className="tile__metaText ">{metaText}</div>
