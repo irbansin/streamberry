@@ -1,0 +1,23 @@
+@import "../assets/styles/variables.scss";
+
+.title {
+  color: $primary-font-color;
+}
+.image {
+  width: 100%;
+}
+.description {
+  color: $foreground-color-light;
+}
+
+.secondaryTitle {
+  color: $primary-color;
+}
+
+.detail {
+  background-color: $background-color;
+}
+
+.badge {
+  color: $primary-font-color;
+}

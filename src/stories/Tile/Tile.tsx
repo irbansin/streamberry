@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./Tile.scss";
+import { Tags } from "../Tags/Tags.tsx";
 
 export default function Tile({
   title,
@@ -27,16 +28,7 @@ export default function Tile({
           </h3>
         </div>
         <div className="flex justify-between">
-          <div className="tile__tags text-sm ">
-            {tags.map((item, index) => {
-              return (
-                <span className="pr-2" key={index}>
-                  {" "}
-                  {item}{" "}
-                </span>
-              );
-            })}
-          </div>
+          <Tags tags={tags} />
           <div className="tile__metaText ">{metaText}</div>
         </div>
         <p className="tile__description">{description}</p>
