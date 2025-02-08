@@ -30,14 +30,14 @@ export const TopBar = ({
               size="small"
               click={onLogout}
               label="Log out"
-              buttonType="primary"
+              buttonStyle="primary"
             />
           </>
         ) : (
           <>
             <Button size="small" click={onLogin} label="Log in" />
             <Button
-              buttonType="primary"
+              buttonStyle="primary"
               size="small"
               click={onCreateAccount}
               label="Sign up"

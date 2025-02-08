@@ -5,10 +5,16 @@ import TextArea from "../../../stories/TextArea/TextArea";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import "./MovieForm.scss";
 
-function handleSubmit(e: any) {
+function handleSave(e: any) {
   e.preventDefault();
-  // Make an API call to update the movie data with this.state
-  // Redirect to the movie detail page or handle errors
+  e.stopPropagation();
+  console.log(e.target.innerText);
+}
+
+function handleReset(e: any) {
+  e.preventDefault();
+  e.stopPropagation();
+  console.log(e.target.innerText);
 }
 
 export default function MovieForm() {
@@ -57,7 +63,7 @@ export default function MovieForm() {
 
   return (
     <div className="movieForm">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSave}>
         <div className="grid grid-cols-2 gap-6">
           <div className="flex flex-col ">
             <label>Title:</label>
@@ -152,19 +158,20 @@ export default function MovieForm() {
         <div className="flex flex-row justify-end my-6">
           <div className="mx-1">
             <Button
-              buttonType="secondary"
+              buttonStyle="secondary"
+              buttonType="submit"
               label={`Reset`}
               size={"medium"}
-              click={() => handleSubmit}
+              click={() => handleSave}
               data-testid="searchButton"
             ></Button>
           </div>{" "}
           <div className="mx-1">
             <Button
-              buttonType="primary"
+              buttonStyle="primary"
               label={`Save`}
               size={"medium"}
-              click={() => handleSubmit}
+              click={() => handleReset}
               data-testid="searchButton"
             ></Button>
           </div>

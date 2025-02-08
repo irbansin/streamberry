@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import PropTypes, { func } from "prop-types";
+import React from "react";
+import PropTypes from "prop-types";
 
 import "./Tile.scss";
 import { Tags } from "../Tags/Tags";
@@ -15,7 +15,7 @@ export default function Tile({
   tags = [],
   metaText = "Action",
   badgeText = "3.2",
-  showEllipsis = true,
+  showEllipsis = false,
   clickEllipsis = (e: any) => {
     e.preventDefault();
     e.stopPropagation();

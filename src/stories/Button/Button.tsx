@@ -6,10 +6,13 @@ import styles from "./button.module.scss";
  * Primary UI component for user interaction
  */
 export const Button = ({
-  buttonType = "primary",
+  buttonStyle = "primary",
+  buttonType = "button",
   size = "medium",
   label = "Labels",
-  click = () => {
+  click = (e: any) => {
+    e.stopPropagation();
+    e.preventDefault();
     console.log("button clicked");
   },
 }) => {
@@ -17,12 +20,9 @@ export const Button = ({
     <button
       type="button"
       onClick={click}
-      // className={["", `storybook-button--${size}`, mode].join(
-      //   " "
-      // )}
       className={`${styles.storybookButton} ${
         styles[`storybook-button--${size}`]
-      } ${styles[`storybook-button--${buttonType}`]}`}
+      } ${styles[`storybook-button--${buttonStyle}`]}`}
     >
       {label}
     </button>

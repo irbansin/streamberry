@@ -22,6 +22,7 @@ import { getAllGenres } from "../services/genres.service";
 import Modal from "../../stories/Modal/Modal";
 import MovieForm from "../components/MovieForm/MovieForm";
 import { Button } from "../../stories/Button/Button";
+import DeleteModal from "../components/DeleteModal/DeleteModal";
 
 export default function MovieListPage() {
   const [movieList, setMovielist] = useState([]);
@@ -30,16 +31,25 @@ export default function MovieListPage() {
   const [genreMap, setGenreMap]: any = useState({}); // [id: string]: string
   const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
   const [showdescription, setShowDescription] = useState(false); // [id: string]: string
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMovieFormModalOpen, setIsMovieFormModalOpen] = useState(false);
+  const [isDeleteFormModalOpen, setIsDeleteFormModalOpen] = useState(false);
   const [modalType, setModalType] = useState("add"); // [id: string]: string
 
   const openModal = (type) => {
     setModalType(type);
-    setIsModalOpen(true);
+    setIsMovieFormModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeMovieFormModal = () => {
+    setIsMovieFormModalOpen(false);
+  };
+
+  const openDeleteModal = () => {
+    setIsDeleteFormModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleteFormModalOpen(false);
   };
 
   useEffect(() => {
@@ -90,22 +100,38 @@ export default function MovieListPage() {
         openModal("Edit");
         break;
       case "Delete":
+        openDeleteModal();
         break;
       default:
         break;
     }
   }
+
+  function handleConfirm(e: any) {
+    console.log(e.target.innerText);
+  }
+  function handleCancel(e: any) {
+    console.log(e.target.innerText);
+  }
   return (
     <div>
-      <div>
-        <Modal
-          title={`${modalType} Movie`}
-          isOpen={isModalOpen}
-          onClose={closeModal}
-        >
-          <MovieForm></MovieForm>
-        </Modal>
-      </div>
+      <Modal
+        title={`${modalType} Movie`}
+        isOpen={isMovieFormModalOpen}
+        onClose={closeMovieFormModal}
+      >
+        <MovieForm></MovieForm>
+      </Modal>
+      <Modal
+        title={`Delete Movie`}
+        isOpen={isDeleteFormModalOpen}
+        onClose={closeDeleteModal}
+      >
+        <DeleteModal
+          handleConfirm={handleConfirm}
+          handleCancel={handleCancel}
+        />
+      </Modal>
       <header className="z-10">
         <div className="background"></div>
         <div className="flex items-center justify-between">
@@ -123,7 +149,7 @@ export default function MovieListPage() {
             size="small"
             click={() => openModal("Add")}
             label="Add Movie"
-            buttonType="secondary"
+            buttonStyle="secondary"
           ></Button>
         </div>
         {!showdescription && (
@@ -201,6 +227,7 @@ export default function MovieListPage() {
                   tags={movie.genre_ids.map((id: number) => genreMap[id])}
                   metaText={String(new Date(movie.release_date).getFullYear())}
                   badgeText={movie.vote_average}
+                  showEllipsis={true}
                   clickEllipsis={handleEllipsisClick}
                 ></Tile>
               </div>
