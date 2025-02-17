@@ -15,8 +15,8 @@ import {
   getMoviesByGenre,
   getMoviesBySearchTerm,
   getMoviesBySortTerm,
-} from "../services/movies.service.ts";
-import { getAllGenres } from "../services/genres.service.ts";
+} from "../services/movies.service";
+import { getAllGenres } from "../services/genres.service";
 
 export default function MovieListPage() {
   const [movieList, setMovielist] = useState([]);
