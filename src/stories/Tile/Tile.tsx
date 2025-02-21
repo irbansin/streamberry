@@ -13,11 +13,11 @@ export default function Tile({
   badgeText,
 }) {
   return (
-    <div className="tile">
+    <div className="tile flex flex-col w-fit max-w-xs">
       <div className="tile__image">
-        <img src={imageLink} alt={altText} />
+        <img className="w-full" src={imageLink} alt={altText} />
       </div>
-      <div className="tile__content py-4 px-1">
+      <div className="tile__content py-4 px-2 w-full">
         <div className="flex justify-between">
           <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
             {title}
@@ -52,7 +52,7 @@ Tile.defaultProps = {
   altText: "",
   tags: [],
   metaText: "Action",
-  badgeText: "N/A",
+  badgeText: "3.2",
 };
 
 Tile.propTypes = {
