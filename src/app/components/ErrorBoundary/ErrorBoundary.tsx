@@ -1,12 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, ReactNode } from "react";
 
-class ErrorBoundary extends Component {
-  constructor(props) {
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
+  constructor(props: {}) {
     super(props);
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     // Update state to indicate that an error occurred
     this.setState({ hasError: true });
     // You can also log the error or send it to a logging service here
@@ -22,7 +26,7 @@ class ErrorBoundary extends Component {
         </div>
       );
     }
-    return this.props.children;
+    return this.props["children"] as ReactNode;
   }
 }
 
