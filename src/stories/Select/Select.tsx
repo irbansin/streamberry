@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 export default function Select({ label, options, value, triggerFunction }) {
   let [selectedValue, setSelectedValue] = useState(value);
 
-  function updateValue(event) {
+  function updateValue(event: any) {
     setSelectedValue(event.target.value);
     triggerFunction(event.target.value);
   }

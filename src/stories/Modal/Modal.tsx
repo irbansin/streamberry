@@ -1,5 +1,5 @@
 import React from "react";
-import "./Modal.scss";
+import styles from "./Modal.module.scss";
 
 import { ReactNode } from "react";
 
@@ -14,13 +14,13 @@ const Modal = ({ title = "Modal", isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-header px-5 py-3">
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
+        <div className={`${styles.modalHeader} px-5 py-3`}>
           <h1>{title}</h1>
           <button onClick={onClose}>x</button>
         </div>
-        <div className="modal-body p-5">{children}</div>
+        <div className={`${styles.modalBody} p-5`}>{children}</div>
       </div>
     </div>
   );

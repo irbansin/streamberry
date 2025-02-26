@@ -3,6 +3,11 @@
 .tile {
   background-color: $background-color;
 
+  .tile__options {
+    background-color: $foreground-color;
+    color: $primary-font-color;
+  }
+
   .tile__image {
   }
 

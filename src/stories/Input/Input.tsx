@@ -13,14 +13,16 @@ export default function Input({
   },
 }) {
   return (
-    <input
-      className={styles.input}
-      type={inputType}
-      placeholder={placeholderText}
-      value={inputValue}
-      onChange={change}
-      onKeyUp={keyup}
-      data-testid="searchValue-input"
-    />
+    <div className="m-1">
+      <input
+        className={styles.input}
+        type={inputType}
+        placeholder={placeholderText}
+        value={inputValue}
+        onChange={change}
+        onKeyUp={keyup}
+        data-testid="searchValue-input"
+      />
+    </div>
   );
 }

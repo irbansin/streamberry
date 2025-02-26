@@ -14,20 +14,20 @@
   z-index: 1000;
 }
 
-.modal-content {
+.modalContent {
   background: $background-color;
   margin: 20px;
   width: fit-content;
   height: fit-content;
 }
 
-.modal-header {
+.modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $primary-font-color;
 }
-.modal-body {
+.modalBody {
   color: $primary-font-color;
 }
 

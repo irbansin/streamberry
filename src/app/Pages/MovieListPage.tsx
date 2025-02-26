@@ -20,7 +20,7 @@ import {
 } from "../services/movies.service";
 import { getAllGenres } from "../services/genres.service";
 import Modal from "../../stories/Modal/Modal";
-import MovieForm from "../components/MovieForm";
+import MovieForm from "../components/MovieForm/MovieForm";
 import { Button } from "../../stories/Button/Button";
 
 export default function MovieListPage() {
@@ -31,8 +31,10 @@ export default function MovieListPage() {
   const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
   const [showdescription, setShowDescription] = useState(false); // [id: string]: string
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState("add"); // [id: string]: string
 
-  const openModal = () => {
+  const openModal = (type) => {
+    setModalType(type);
     setIsModalOpen(true);
   };
 
@@ -79,14 +81,32 @@ export default function MovieListPage() {
       setMovielist(response);
     });
   }
+  function handleEllipsisClick(e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(e.target.innerText);
+    switch (e.target.innerText) {
+      case "Edit":
+        openModal("Edit");
+        break;
+      case "Delete":
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <div>
       <div>
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Modal
+          title={`${modalType} Movie`}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        >
           <MovieForm></MovieForm>
         </Modal>
       </div>
-      <header>
+      <header className="z-10">
         <div className="background"></div>
         <div className="flex items-center justify-between">
           <TopBar title="ZOLO Movies"></TopBar>
@@ -97,13 +117,11 @@ export default function MovieListPage() {
             >
               <FontAwesomeIcon icon={faSearch} />
             </div>
-          )}{" "}
-          {/* <button className="add-movie-button" onClick={openModal}>
-            Add Movie
-          </button> */}
+          )}
+
           <Button
             size="small"
-            click={openModal}
+            click={() => openModal("Add")}
             label="Add Movie"
             buttonType="secondary"
           ></Button>
@@ -183,6 +201,7 @@ export default function MovieListPage() {
                   tags={movie.genre_ids.map((id: number) => genreMap[id])}
                   metaText={String(new Date(movie.release_date).getFullYear())}
                   badgeText={movie.vote_average}
+                  clickEllipsis={handleEllipsisClick}
                 ></Tile>
               </div>
             );

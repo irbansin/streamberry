@@ -12,13 +12,15 @@ export default function TextArea({
   },
 }) {
   return (
-    <textarea
-      className={styles.textarea}
-      placeholder={placeholderText}
-      value={inputValue}
-      onChange={change}
-      onKeyUp={keyup}
-      data-testid="searchValue-input"
-    />
+    <div className="m-1">
+      <textarea
+        className={styles.textarea}
+        placeholder={placeholderText}
+        value={inputValue}
+        onChange={change}
+        onKeyUp={keyup}
+        data-testid="searchValue-input"
+      />
+    </div>
   );
 }
