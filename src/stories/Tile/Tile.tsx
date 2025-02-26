@@ -6,20 +6,24 @@ import "./Tile.scss";
 export default function Tile({
   title,
   description,
-  image,
+  imageLink,
   altText,
   tags,
   metaText,
+  badgeText,
 }) {
   return (
     <div className="tile">
       <div className="tile__image">
-        <img src={image} alt={altText} />
+        <img src={imageLink} alt={altText} />
       </div>
       <div className="tile__content">
         <div className="flex justify-between">
           <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
             {title}
+          </h3>
+          <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
+            {badgeText}
           </h3>
         </div>
         <div className="flex justify-between">

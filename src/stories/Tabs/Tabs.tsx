@@ -16,8 +16,8 @@ export default function Tabs({ tabsList, triggerFunction }) {
       {tabsList.map((tab, index) => {
         return (
           <Tab
-            tab={tab}
-            key={tab.id}
+            tab={tab.name}
+            key={tab.id || index}
             isActive={tab.id === activeTab}
             selectTab={() => selectTab(tab.id)}
           ></Tab>

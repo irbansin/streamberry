@@ -10,7 +10,7 @@ export default function Tab({ tab, isActive, selectTab }) {
       onClick={selectTab}
       data-testid="tab"
     >
-      {tab.name}
+      {tab}
     </div>
   );
 }
