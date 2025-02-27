@@ -2,14 +2,7 @@
 
 .tab {
   color: $primary-font-color;
-  font-size: large;
-  height: 100%;
-  padding: 0 10px;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+
   &.active {
     color: $primary-font-color;
     border-bottom: 2px solid $foreground-color-light;
