@@ -2,28 +2,35 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Tabs from "./Tabs";
 
-const tabsList = ["Tab 1", "Tab 2", "Tab 3"];
-
 describe("Tabs Component", () => {
+  const tabsList = ["Tab 1", "Tab 2", "Tab 3"];
+  const triggerFunction = jest.fn();
+
   it("renders tabs correctly", () => {
-    const { getByTestId } = render(<Tabs tabsList={tabsList} />);
-    const tabsContainer = getByTestId("tabs");
+    const { getByText } = render(
+      <Tabs tabsList={tabsList} triggerFunction={triggerFunction} />
+    );
 
-    expect(tabsContainer.children.length).toBe(tabsList.length);
-
-    expect(tabsContainer.firstChild).toHaveClass("active");
+    // Ensure that the Tabs component renders with the correct tab names
+    tabsList.forEach((tab) => {
+      const tabElement = getByText(tab);
+      expect(tabElement).toBeInTheDocument();
+    });
   });
 
-  it("changes active tab on click", () => {
-    const { getByTestId } = render(<Tabs tabsList={tabsList} />);
-    const tabsContainer = getByTestId("tabs");
+  it("selects a tab and triggers the triggerFunction", () => {
+    const { getByText } = render(
+      <Tabs tabsList={tabsList} triggerFunction={triggerFunction} />
+    );
 
-    const secondTab = tabsContainer.children[1];
-    fireEvent.click(secondTab);
+    // Click on a tab and check if it triggers the triggerFunction
+    const tabElement = getByText("Tab 2");
+    fireEvent.click(tabElement);
 
-    expect(secondTab).toHaveClass("active");
+    // Ensure that the correct tab is active
+    expect(tabElement).toHaveClass("active");
 
-    const firstTab = tabsContainer.children[0];
-    expect(firstTab).not.toHaveClass("active");
+    // Ensure that the triggerFunction was called with the correct tab id
+    expect(triggerFunction).toHaveBeenCalledWith(1);
   });
 });

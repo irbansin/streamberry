@@ -42,7 +42,7 @@ export default function Searchbar({
         label={"Search"}
         size={"medium"}
         click={() => search(searchValue)}
-        data-testid="searchButton"
+        data-testid="search-button"
       ></Button>
     </div>
   );

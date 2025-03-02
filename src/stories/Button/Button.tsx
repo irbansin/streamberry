@@ -29,9 +29,4 @@ export const Button = ({
   );
 };
 
-Button.propTypes = {
-  primary: PropTypes.bool,
-  size: PropTypes.oneOf(["small", "medium", "large"]),
-  label: PropTypes.string.isRequired,
-  click: PropTypes.func,
-};
+Button.propTypes = {};

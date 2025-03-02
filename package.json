@@ -166,6 +166,7 @@
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
     ],
+    "type": "module",
     "resetMocks": true
   },
   "babel": {

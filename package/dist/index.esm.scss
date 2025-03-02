@@ -1,0 +1,942 @@
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.input {
+  width: 100%;
+  height: 100%;
+  min-height: 30px;
+  background-color: $foreground-color;
+  padding: 0 20px;
+  color: $primary-font-color;
+  border: none;
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $foreground-color-light;
+    opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $foreground-color-light;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $foreground-color-light;
+  }
+  border-radius: 4px;
+  &:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px $foreground-color-light;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.storybookButton {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+.storybook-button--primary {
+  color: $primary-font-color;
+  background-color: $primary-color;
+}
+.storybook-button--secondary {
+  color: $primary-color;
+  background-color: $secondary-color;
+}
+.storybook-button--small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+.storybook-button--medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+.storybook-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.searchbar {
+  height: 50px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10rem;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.tile {
+  background-color: $background-color;
+
+  .tile__options {
+    background-color: $foreground-color;
+    color: $primary-font-color;
+  }
+
+  .tile__image {
+  }
+
+  .tile__content {
+  }
+
+  .tile__title {
+    color: $foreground-color-light;
+  }
+
+  .tile__metaText {
+    color: $foreground-color-light;
+  }
+
+  .tile__description {
+    color: $primary-font-color;
+  }
+}
+
+.label {
+  color: #f65261;
+  margin: 5px;
+  display: block;
+}
+
+.primary {
+  border: 2px solid #f65261;
+  background-color: #f65261;
+  border-radius: 50%;
+  color: white;
+  margin: 5px;
+  display: inline-block;
+}
+
+.counter {
+  color: #f65261;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.roundedBorder {
+  border: 1px solid #f65261;
+  padding: 2px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.title {
+  color: $primary-font-color;
+}
+.image {
+  width: 100%;
+}
+.description {
+  color: $foreground-color-light;
+}
+
+.secondaryTitle {
+  color: $primary-color;
+}
+
+.detail {
+  background-color: $background-color;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.selectContainer {
+  width: 100%;
+  background-color: $background-color;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: $primary-font-color;
+  max-width: fit-content;
+  .selectLabel {
+    color: $foreground-color-light;
+    padding-right: 10px;
+    text-transform: uppercase;
+  }
+  select {
+    background-color: $background-color;
+    border: none;
+    color: $foreground-color-light;
+    width: 100%;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.tile__tags {
+  color: $foreground-color-light;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.storybook-topbar {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $primary-color;
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    img {
+      display: inline-block;
+      vertical-align: top;
+      height: 50px;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1;
+      margin: 6px 0 6px 10px;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  .welcome {
+    color: $secondary-color;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+}
+
+/* CSS for modal */
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: $background-color;
+  margin: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $primary-font-color;
+}
+.modalBody {
+  color: $primary-font-color;
+}
+
+/* Add styles for the close button and other modal content as needed */
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.tabsContainer {
+  width: 100%;
+  background-color: $background-color;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.badge {
+  color: $primary-font-color;
+  background-color: $background-color;
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  background-color: $foreground-color;
+  padding: 0 20px;
+  color: $primary-font-color;
+  border: none;
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $foreground-color-light;
+    opacity: 1; /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $foreground-color-light;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $foreground-color-light;
+  }
+  border-radius: 4px;
+  &:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px $foreground-color-light;
+  }
+}
+
+// Primary and secondary colors
+$primary-color: #f65261;
+$secondary-color: #424242;
+$tertiary-color: #f49b9b;
+$foreground-color: #424242;
+$foreground-color-light: #999999;
+$background-color: #232323;
+$background-color-light: #333333;
+
+// Fonts
+$font-family: "Arial", sans-serif;
+$heading-font: "Helvetica", sans-serif;
+$primary-font-color: #fff;
+$secondary-font-color: #333;
+
+// Spacing variables
+$padding-small: 10px;
+$padding-small-x: 10px;
+$padding-medium: 20px;
+$padding-large: 30px;
+
+// Common styles
+$success-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f1c40f;
+$default-color: #3498db;
+
+// Mixin for box shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for text shadows
+@mixin text-shadow($x, $y, $blur, $color) {
+  text-shadow: $x $y $blur $color;
+}
+
+// Mixin for button styles
+@mixin button-style {
+  display: inline-block;
+  padding: $padding-small $padding-medium;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  border: none;
+  cursor: pointer;
+}
+
+
+.tab {
+  color: $primary-font-color;
+
+  &.active {
+    color: $primary-font-color;
+    border-bottom: 2px solid $foreground-color-light;
+  }
+  &:hover {
+    background-color: $foreground-color-light;
+    color: $background-color;
+    border-bottom: 2px solid $primary-color;
+  }
+}

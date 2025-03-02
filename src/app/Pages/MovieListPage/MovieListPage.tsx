@@ -197,6 +197,7 @@ export default function MovieListPage() {
             let posterPath = movie.poster_path || movie.backdrop_path;
             if (!posterPath) return null;
             return (
+              //Xreate a separate component for this
               <Link to={`/movie/${movie.id}`} key={index}>
                 {" "}
                 <div

@@ -23,7 +23,7 @@ export default function MovieDetailsPage() {
       <Detail
         title={currentMovie.title}
         badge={Number(currentMovie.vote_average).toFixed(1)}
-        description={currentMovie.description}
+        description={currentMovie.overview}
         imageLink={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
         secondaryTitle={String(
           new Date(currentMovie.release_date).getFullYear()

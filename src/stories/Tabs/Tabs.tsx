@@ -18,8 +18,8 @@ export default function Tabs({ tabsList, triggerFunction }) {
           <Tab
             tab={tab.name || tab}
             key={tab.id || index}
-            isActive={tab.id === activeTab}
-            selectTab={() => selectTab(tab.id)}
+            isActive={tab.id === activeTab || index === activeTab}
+            selectTab={() => selectTab(tab.id || index)}
           ></Tab>
         );
       })}
