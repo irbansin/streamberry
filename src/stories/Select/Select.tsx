@@ -34,6 +34,7 @@ Select.defaultProps = {
     { label: "Option 3", value: "3" },
   ],
   value: "1",
+  label: "",
   triggerFunction: () => {},
 };
 

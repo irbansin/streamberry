@@ -8,6 +8,7 @@
   align-items: center;
   padding: 0 20px;
   color: $primary-font-color;
+  max-width: fit-content;
   .selectLabel {
     color: $foreground-color-light;
     padding-right: 10px;
@@ -16,6 +17,7 @@
   select {
     background-color: $background-color;
     border: none;
+    color: $foreground-color-light;
     &:focus-visible {
       outline: none;
     }
