@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Detail.module.scss";
 import { Tags } from "../Tags/Tags.tsx";
+import { Badge } from "../Badge/Badge.tsx";
 
 export default function Detail({
   title,
@@ -23,12 +24,9 @@ export default function Detail({
             <div className="text-5xl font-bold subpixel-antialiased font-sans">
               <h1 className={styles.title}>{title}</h1>
             </div>
-            <div className="text-3xl subpixel-antialiased font-sans pl-4">
-              <div className={styles.badge}>{badge}</div>
-            </div>
+            <Badge value={badge} size="lg"></Badge>
           </div>
           <div className="py-2">
-            {" "}
             <Tags tags={tags} />
           </div>
 

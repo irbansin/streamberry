@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import "./Tile.scss";
 import { Tags } from "../Tags/Tags.tsx";
+import { Badge } from "../Badge/Badge.tsx";
 
 export default function Tile({
   title,
@@ -23,9 +24,8 @@ export default function Tile({
           <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
             {title}
           </h3>
-          <h3 className="tile__title text-2xl font-black subpixel-antialiased	font-sans">
-            {badgeText}
-          </h3>
+
+          <Badge value={badgeText} size="sm"></Badge>
         </div>
         <div className="flex justify-between">
           <Tags tags={tags} />
