@@ -6,25 +6,23 @@ import Searchbar from "../../../stories/Searchbar/Searchbar";
 import Select from "../../../stories/Select/Select";
 import Tabs from "../../../stories/Tabs/Tabs";
 import Tile from "../../../stories/Tile/Tile";
+import { useSearchParams } from "react-router-dom";
 
-import "./MovieListPage.scss";
-
-import {
-  getAllMovies,
-  getMoviesByGenre,
-  getMoviesBySearchTerm,
-  getMoviesBySortTerm,
-} from "../../services/movies.service";
+import { getAllMovies, searchMovies } from "../../services/movies.service";
 import { getAllGenres } from "../../services/genres.service";
 import Modal from "../../../stories/Modal/Modal";
 import MovieForm from "../../components/MovieForm/MovieForm";
 import { Button } from "../../../stories/Button/Button";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
+import "./MovieListPage.scss";
+
 export default function MovieListPage() {
   const [movieList, setMovielist] = useState([]);
   const [genreList, setGenreList] = useState([]);
-  const [sortBy, setSortBy] = useState("release_date.desc");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [genreMap, setGenreMap]: any = useState({}); // [id: string]: string
   const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
   const [isMovieFormModalOpen, setIsMovieFormModalOpen] = useState(false);
@@ -55,13 +53,6 @@ export default function MovieListPage() {
   };
 
   useEffect(() => {
-    getAllMovies()
-      .then((response) => {
-        response.filter((movie: any) => !movie.adult);
-        setMovielist(response);
-        console.log(response);
-      })
-      .catch((error) => console.error(error));
     getAllGenres()
       .then((response) => {
         setGenreList(response);
@@ -75,24 +66,35 @@ export default function MovieListPage() {
       .catch((error) => console.error(error));
   }, []);
 
-  function updateMovieList(genreId: number) {
-    getMoviesByGenre(genreId)
+  useEffect(() => {
+    getAllMovies(searchParams.get("genre"), searchParams.get("sort"))
       .then((response) => {
+        response.filter((movie: any) => !movie.adult);
         setMovielist(response);
       })
       .catch((error) => console.error(error));
+
+    if (searchParams.get("search")) {
+      searchMovies(searchParams.get("search"))
+        .then((response) => {
+          setMovielist(response);
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [searchParams]);
+
+  function updateMovieList(genreId: number) {
+    setSearchParams({ ...searchParams, genre: genreId.toString() });
   }
   function search(searchTerm: string) {
-    if (searchTerm)
-      getMoviesBySearchTerm(searchTerm).then((response) => {
-        setMovielist(response);
-      });
+    if (searchTerm) setSearchParams({ search: searchTerm });
   }
   function sortMovieList(sortTerm = "latest") {
-    if (sortTerm) setSortBy(sortTerm);
-    getMoviesBySortTerm(sortTerm).then((response) => {
-      setMovielist(response);
-    });
+    if (sortTerm) {
+      const params = new URLSearchParams(searchParams);
+      params.set("sort", sortTerm);
+      setSearchParams(params);
+    }
   }
   function handleEllipsisClick(e: any) {
     e.preventDefault();
@@ -148,9 +150,12 @@ export default function MovieListPage() {
         </div>
         <div className="search">
           <div className="title">Find Your Movies</div>
-          <Searchbar search={search}></Searchbar>
+          <Searchbar
+            initialSearchValue={searchParams.get("search") || ""}
+            search={search}
+          ></Searchbar>
         </div>
-        )
+
         <div className="flex flex-row justify-between w-full flex-wrap border-bottom">
           <div className="grow w-4/5">
             <Tabs
@@ -181,7 +186,7 @@ export default function MovieListPage() {
                   value: "vote_average.desc",
                 },
               ]}
-              value={sortBy}
+              value={searchParams.get("sort")}
             ></Select>
           </div>
         </div>

@@ -39,7 +39,7 @@ export default function Tile({
             {title}
           </h3>
 
-          <Badge value={String(badgeText)} size="sm"></Badge>
+          <Badge value={String(Number(badgeText).toFixed(1))} size="sm"></Badge>
         </div>
         <div className="flex justify-between">
           <Tags tags={tags} />
