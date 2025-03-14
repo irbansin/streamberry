@@ -35,8 +35,14 @@ export default function MovieListPage() {
   const [isDeleteFormModalOpen, setIsDeleteFormModalOpen] = useState(false);
   const [modalType, setModalType] = useState("add"); // [id: string]: string
 
-  const openModal = (type) => {
-    setModalType(type);
+  const openAddModal = () => {
+    setCurrentMovie({});
+    setModalType("Add");
+    setIsMovieFormModalOpen(true);
+  };
+
+  const openEditModal = () => {
+    setModalType("Edit");
     setIsMovieFormModalOpen(true);
   };
 
@@ -97,7 +103,7 @@ export default function MovieListPage() {
     console.log(e.target.innerText);
     switch (e.target.innerText) {
       case "Edit":
-        openModal("Edit");
+        openEditModal();
         break;
       case "Delete":
         openDeleteModal();
@@ -120,7 +126,7 @@ export default function MovieListPage() {
         isOpen={isMovieFormModalOpen}
         onClose={closeMovieFormModal}
       >
-        <MovieForm></MovieForm>
+        <MovieForm currentMovie={currentMovie}></MovieForm>
       </Modal>
       <Modal
         title={`Delete Movie`}
@@ -147,7 +153,7 @@ export default function MovieListPage() {
 
           <Button
             size="small"
-            click={() => openModal("Add")}
+            click={() => openAddModal("Add")}
             label="Add Movie"
             buttonStyle="secondary"
           ></Button>
@@ -228,7 +234,10 @@ export default function MovieListPage() {
                   metaText={String(new Date(movie.release_date).getFullYear())}
                   badgeText={movie.vote_average}
                   showEllipsis={true}
-                  clickEllipsis={handleEllipsisClick}
+                  clickAction={(e) => {
+                    setCurrentMovie(movie);
+                    handleEllipsisClick(e);
+                  }}
                 ></Tile>
               </div>
             );

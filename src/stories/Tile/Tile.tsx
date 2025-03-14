@@ -16,7 +16,7 @@ export default function Tile({
   metaText = "Action",
   badgeText = "3.2",
   showEllipsis = false,
-  clickEllipsis = (e: any) => {
+  clickAction = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
     console.log(e.target.innerText);
@@ -27,7 +27,7 @@ export default function Tile({
   return (
     <div className="tile flex flex-col w-fit max-w-xs relative">
       {showEllipsis ? (
-        <Dropdown menuItems={options} click={clickEllipsis} />
+        <Dropdown menuItems={options} click={clickAction} />
       ) : null}
       <div className="tile__image">
         <img className="w-full" src={imageLink} alt={altText} />

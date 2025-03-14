@@ -17,14 +17,15 @@ function handleReset(e: any) {
   console.log(e.target.innerText);
 }
 
-export default function MovieForm() {
-  const [title, setTitle] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
-  const [movieUrl, setMovieUrl] = useState("");
-  const [rating, setRating] = useState("");
-  const [genre, setGenre] = useState("");
-  const [runtime, setRuntime] = useState("");
-  const [overView, setOverView] = useState("");
+export default function MovieForm({ currentMovie }) {
+  console.log(currentMovie);
+  const [title, setTitle] = useState(currentMovie.title);
+  const [releaseDate, setReleaseDate] = useState(currentMovie.release_date);
+  const [posterUrl, setMovieUrl] = useState(currentMovie.poster_path);
+  const [rating, setRating] = useState(currentMovie.vote_average);
+  // const [genre, setGenre] = useState([...currentMovie.genre_ids]);
+  // const [runtime, setRuntime] = useState(currentMovie.runtime);
+  const [overView, setOverView] = useState(currentMovie.overView);
 
   function handleTitle(event: any): void {
     event.preventDefault();
@@ -51,15 +52,10 @@ export default function MovieForm() {
     setRating(event.target.value);
   }
 
-  function handleGenre(event: any): void {
-    event.preventDefault();
-    setGenre(event.target.value);
-  }
-
-  function handleRuntime(event: any): void {
-    event.preventDefault();
-    setRuntime(event.target.value);
-  }
+  // function handleGenre(event: any): void {
+  //   event.preventDefault();
+  //   setGenre(event.target.value);
+  // }
 
   return (
     <div className="movieForm">
@@ -97,7 +93,7 @@ export default function MovieForm() {
               <Input
                 inputType={"text"}
                 placeholderText={"URL for the movie poster"}
-                inputValue={movieUrl}
+                inputValue={posterUrl}
                 change={handleMovieUrl}
                 keyup={handleMovieUrl}
                 data-testid="searchValue-input"
@@ -117,32 +113,20 @@ export default function MovieForm() {
               ></Input>
             </ErrorBoundary>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <label>Genre:</label>
             <ErrorBoundary>
               <Input
                 inputType={"text"}
                 placeholderText={"Select Genre"}
-                inputValue={genre}
+                inputValue={genre.join(",")}
                 change={handleGenre}
                 keyup={handleGenre}
                 data-testid="searchValue-input"
               ></Input>
             </ErrorBoundary>
-          </div>
-          <div className="flex flex-col ">
-            <label>Runtime:</label>
-            <ErrorBoundary>
-              <Input
-                inputType={"text"}
-                placeholderText={"Movie Runtime"}
-                inputValue={runtime}
-                change={handleRuntime}
-                keyup={handleRuntime}
-                data-testid="searchValue-input"
-              ></Input>
-            </ErrorBoundary>
-          </div>
+          </div> */}
+
           <div className="flex flex-col ">
             <label>Overview:</label>
             <TextArea
