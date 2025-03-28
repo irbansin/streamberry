@@ -1,28 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./button.scss";
+import styles from "./button.module.scss";
 
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
+  buttonType = "primary",
   size = "medium",
   label = "Labels",
   click = () => {
     console.log("button clicked");
   },
 }) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
   return (
     <button
       type="button"
       onClick={click}
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
+      // className={["", `storybook-button--${size}`, mode].join(
+      //   " "
+      // )}
+      className={`${styles.storybookButton} ${
+        styles[`storybook-button--${size}`]
+      } ${styles[`storybook-button--${buttonType}`]}`}
     >
       {label}
     </button>

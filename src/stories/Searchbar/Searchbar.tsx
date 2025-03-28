@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import PropTypes from "prop-types";
+import Input from "../Input/Input";
 
 export default function Searchbar({
   initialSearchValue = "",
@@ -28,14 +29,14 @@ export default function Searchbar({
 
   return (
     <div className={styles.searchbar}>
-      <input
-        type="text"
-        placeholder="What do you want to watch?"
-        value={searchValue}
-        onChange={handleChange}
-        onKeyUp={handleKeyUp}
+      <Input
+        inputType={"text"}
+        placeholderText={"What do you want to watch?"}
+        inputValue={searchValue}
+        change={handleChange}
+        keyup={handleKeyUp}
         data-testid="searchValue-input"
-      />
+      ></Input>
       <Button
         primary={true}
         label={"Search"}

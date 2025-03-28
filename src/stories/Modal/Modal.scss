@@ -1,0 +1,34 @@
+/* CSS for modal */
+@import "../assets/styles/variables.scss";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: $background-color;
+  margin: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $primary-font-color;
+}
+.modal-body {
+  color: $primary-font-color;
+}
+
+/* Add styles for the close button and other modal content as needed */

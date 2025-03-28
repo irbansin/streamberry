@@ -10,6 +10,8 @@ import Detail from "../../stories/Detail/Detail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+import "./MovieListPage.scss";
+
 import {
   getAllMovies,
   getMoviesByGenre,
@@ -17,6 +19,9 @@ import {
   getMoviesBySortTerm,
 } from "../services/movies.service";
 import { getAllGenres } from "../services/genres.service";
+import Modal from "../../stories/Modal/Modal";
+import MovieForm from "../components/MovieForm";
+import { Button } from "../../stories/Button/Button";
 
 export default function MovieListPage() {
   const [movieList, setMovielist] = useState([]);
@@ -25,6 +30,15 @@ export default function MovieListPage() {
   const [genreMap, setGenreMap]: any = useState({}); // [id: string]: string
   const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
   const [showdescription, setShowDescription] = useState(false); // [id: string]: string
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     getAllMovies()
@@ -67,6 +81,11 @@ export default function MovieListPage() {
   }
   return (
     <div>
+      <div>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <MovieForm></MovieForm>
+        </Modal>
+      </div>
       <header>
         <div className="background"></div>
         <div className="flex items-center justify-between">
@@ -78,7 +97,16 @@ export default function MovieListPage() {
             >
               <FontAwesomeIcon icon={faSearch} />
             </div>
-          )}
+          )}{" "}
+          {/* <button className="add-movie-button" onClick={openModal}>
+            Add Movie
+          </button> */}
+          <Button
+            size="small"
+            click={openModal}
+            label="Add Movie"
+            buttonType="secondary"
+          ></Button>
         </div>
         {!showdescription && (
           <div className="search">

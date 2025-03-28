@@ -26,13 +26,18 @@ export const TopBar = ({
             <span className="welcome">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" click={onLogout} label="Log out" />
+            <Button
+              size="small"
+              click={onLogout}
+              label="Log out"
+              buttonType="primary"
+            />
           </>
         ) : (
           <>
             <Button size="small" click={onLogin} label="Log in" />
             <Button
-              primary
+              buttonType="primary"
               size="small"
               click={onCreateAccount}
               label="Sign up"
