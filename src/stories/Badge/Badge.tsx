@@ -2,17 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Badge.module.scss";
 
-const setStyles = (size) => {
+const setStyles = (size: string) => {
   if (size === "lg") {
     return "text-3xl h-16 w-16 border-2";
-  } else if (size === "md") {
-    return "text-xl h-12 w-12 border-2";
   } else if (size === "sm") {
     return " h-10 w-10 border-2";
   }
 };
 
-export function Badge({ value, size }) {
+export function Badge({ value = "7.3", size = "sm" }) {
   return (
     <div
       className={
@@ -24,12 +22,8 @@ export function Badge({ value, size }) {
     </div>
   );
 }
-Badge.defaultProps = {
-  value: 7.3,
-  size: "small",
-};
 
 Badge.propTypes = {
   value: PropTypes.string,
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  size: PropTypes.oneOf(["sm", "ms", "lg"]),
 };

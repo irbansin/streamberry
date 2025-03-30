@@ -22,21 +22,21 @@ export default function MovieListPage() {
   const [movieList, setMovielist] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [sortBy, setSortBy] = useState("release_date.desc");
-  const [genreMap, setGenreMap] = useState({}); // [id: string]: string
+  const [genreMap, setGenreMap]: any = useState({}); // [id: string]: string
   const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
   const [showdescription, setShowDescription] = useState(false); // [id: string]: string
 
   useEffect(() => {
     getAllMovies()
       .then((response) => {
-        response.filter((movie) => !movie.adult);
+        response.filter((movie: any) => !movie.adult);
         setMovielist(response);
       })
       .catch((error) => console.log(error));
     getAllGenres()
       .then((response) => {
         setGenreList(response);
-        let genreObj = response.reduce((obj, genre) => {
+        let genreObj = response.reduce((obj: any, genre: any) => {
           obj[genre.id] = genre.name;
           return obj;
         }, {});
@@ -46,14 +46,14 @@ export default function MovieListPage() {
       .catch((error) => console.log(error));
   }, []);
 
-  function updateMovieList(genreId) {
+  function updateMovieList(genreId: number) {
     getMoviesByGenre(genreId)
       .then((response) => {
         setMovielist(response);
       })
       .catch((error) => console.log(error));
   }
-  function search(searchTerm) {
+  function search(searchTerm: string) {
     if (searchTerm)
       getMoviesBySearchTerm(searchTerm).then((response) => {
         setMovielist(response);
@@ -96,7 +96,7 @@ export default function MovieListPage() {
               secondaryTitle={String(
                 new Date(currentMovie.release_date).getFullYear()
               )}
-              tags={currentMovie.genre_ids.map((id) => genreMap[id])}
+              tags={currentMovie.genre_ids.map((id: number) => genreMap[id])}
             ></Detail>
           </div>
         )}
@@ -144,7 +144,6 @@ export default function MovieListPage() {
             return (
               <div
                 onClick={() => {
-                  console.log(movie);
                   setCurrentMovie(movie);
                   setShowDescription(true);
                 }}
@@ -152,7 +151,7 @@ export default function MovieListPage() {
                 <Tile
                   title={movie.title}
                   imageLink={`https://image.tmdb.org/t/p/w500${posterPath}`}
-                  tags={movie.genre_ids.map((id) => genreMap[id])}
+                  tags={movie.genre_ids.map((id: number) => genreMap[id])}
                   metaText={String(new Date(movie.release_date).getFullYear())}
                   badgeText={movie.vote_average}
                   key={i}

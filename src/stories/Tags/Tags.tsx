@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Tags.module.scss";
 
-export function Tags({ tags = [] }) {
+export function Tags({ tags = ["tag1", "tag2", "tag3"] }) {
   return (
     <div className={styles.tile__tags}>
       {tags.map((item, index) => {
@@ -15,10 +15,6 @@ export function Tags({ tags = [] }) {
     </div>
   );
 }
-
-Tags.defaultProps = {
-  tags: [],
-};
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string),

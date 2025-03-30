@@ -5,12 +5,12 @@ import { Tags } from "../Tags/Tags";
 import { Badge } from "../Badge/Badge";
 
 export default function Detail({
-  title,
-  badge,
-  description,
-  imageLink,
-  secondaryTitle,
-  tags,
+  title = "Pulp Fiction",
+  badge = "7.2",
+  description = "Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra",
+  imageLink = "https=//picsum.photos/200/300",
+  secondaryTitle = "1994",
+  tags = [],
 }) {
   return (
     <div className={styles.detail}>
@@ -24,7 +24,7 @@ export default function Detail({
             <div className="text-5xl font-bold subpixel-antialiased font-sans">
               <h1 className={styles.title}>{title}</h1>
             </div>
-            <Badge value={badge} size="lg"></Badge>
+            <Badge value={String(badge)} size="lg"></Badge>
           </div>
           <div className="py-2">
             <Tags tags={tags} />
@@ -38,20 +38,10 @@ export default function Detail({
   );
 }
 
-Detail.defaultProps = {
-  title: "Pulp Fiction",
-  badge: "7.2",
-  description:
-    "Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra",
-  image: "https://picsum.photos/200/300",
-  secondaryTitle: "1994",
-  tags: ["tag1", "tag2", "tag3"],
-};
-
 Detail.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  image: PropTypes.string,
+  imageLink: PropTypes.string,
   secondaryTitle: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
 };

@@ -5,14 +5,14 @@ import { Button } from "../Button/Button";
 import "./TopBar.scss";
 
 export const TopBar = ({
-  title,
-  imgAddress,
-  imgAltText,
-  user,
-  onLogin,
-  onLogout,
-  onCreateAccount,
-  loginEnabled,
+  title = "Title",
+  user = null,
+  imgAddress = "https://i2.wp.com/www.lightvesselautomatic.com/wp-content/uploads/2016/03/html5-logo.png?w=500&ssl=1",
+  imgAltText = "image",
+  onLogin = () => {},
+  onLogout = () => {},
+  onCreateAccount = () => {},
+  loginEnabled = false,
 }) => (
   <div className="storybook-topbar">
     <div className="topbar-logo">
@@ -26,15 +26,15 @@ export const TopBar = ({
             <span className="welcome">
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <Button size="small" click={onLogout} label="Log out" />
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
+            <Button size="small" click={onLogin} label="Log in" />
             <Button
               primary
               size="small"
-              onClick={onCreateAccount}
+              click={onCreateAccount}
               label="Sign up"
             />
           </>
@@ -55,16 +55,4 @@ TopBar.propTypes = {
   onLogout: PropTypes.func,
   onCreateAccount: PropTypes.func,
   loginEnabled: PropTypes.bool,
-};
-
-TopBar.defaultProps = {
-  title: null,
-  user: null,
-  imgAddress:
-    "https://i2.wp.com/www.lightvesselautomatic.com/wp-content/uploads/2016/03/html5-logo.png?w=500&ssl=1",
-  imgAltText: null,
-  onLogin: () => {},
-  onLogout: () => {},
-  onCreateAccount: () => {},
-  loginEnabled: false,
 };
