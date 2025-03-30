@@ -17,8 +17,10 @@ export default function Dropdown({
         <FontAwesomeIcon icon={faEllipsis} />
       </button>
       <div className={styles.dropdownContent}>
-        {menuItems.map((item) => (
-          <div onClick={click}>{item}</div>
+        {menuItems.map((item, index) => (
+          <div onClick={click} key={index}>
+            {item}
+          </div>
         ))}
       </div>
     </div>
