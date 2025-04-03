@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { TopBar } from "../../../stories/TopBar/TopBar";
-import Searchbar from "../../../stories/Searchbar/Searchbar";
-import Select from "../../../stories/Select/Select";
-import Tabs from "../../../stories/Tabs/Tabs";
-import Tile from "../../../stories/Tile/Tile";
+import { TopBar } from "cryll-ui";
+import { Searchbar } from "cryll-ui";
+import { Select } from "cryll-ui";
+import { Tabs } from "cryll-ui";
+import { Tile } from "cryll-ui";
 import { useSearchParams } from "react-router-dom";
 
 import { getAllMovies, searchMovies } from "../../services/movies.service";
 import { getAllGenres } from "../../services/genres.service";
-import Modal from "../../../stories/Modal/Modal";
+import { Modal } from "cryll-ui";
 import MovieForm from "../../components/MovieForm/MovieForm";
-import { Button } from "../../../stories/Button/Button";
+import { Button } from "cryll-ui";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 import "./MovieListPage.scss";
@@ -157,13 +157,13 @@ export default function MovieListPage() {
         </div>
 
         <div className="flex flex-row justify-between w-full flex-wrap border-bottom">
-          <div className="grow w-4/5">
+          <div className="grow">
             <Tabs
               tabsList={genreList.slice(0, 7)}
               triggerFunction={updateMovieList}
             ></Tabs>
           </div>
-          <div className="w-1/5">
+          <div>
             <Select
               label={"Sort By"}
               triggerFunction={sortMovieList}

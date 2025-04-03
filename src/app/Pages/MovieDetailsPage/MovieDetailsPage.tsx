@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MovieDetailsPage.module.scss";
-import Detail from "../../../stories/Detail/Detail";
+import { Detail } from "cryll-ui";
 import { useParams } from "react-router-dom";
 
 export default function MovieDetailsPage() {

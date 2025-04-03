@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./DeleteModal.module.scss";
-import { Button } from "../../../stories/Button/Button";
+import { Button } from "cryll-ui";
 
 export default function DeleteModal({
   handleConfirm = (e: any) => {

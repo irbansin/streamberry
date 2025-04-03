@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Input from "../../../stories/Input/Input";
-import { Button } from "../../../stories/Button/Button";
-import TextArea from "../../../stories/TextArea/TextArea";
+import { Input } from "cryll-ui";
+import { Button } from "cryll-ui";
+import { TextArea } from "cryll-ui";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import "./MovieForm.scss";
 
