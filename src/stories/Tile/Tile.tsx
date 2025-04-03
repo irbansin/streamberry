@@ -6,13 +6,13 @@ import { Tags } from "../Tags/Tags.tsx";
 import { Badge } from "../Badge/Badge.tsx";
 
 export default function Tile({
-  title,
-  description,
-  imageLink,
-  altText,
-  tags,
-  metaText,
-  badgeText,
+  title = "Title",
+  description = "",
+  imageLink = "https=//picsum.photos/",
+  altText = "",
+  tags = [],
+  metaText = "Action",
+  badgeText = "3.2",
 }) {
   return (
     <div className="tile flex flex-col w-fit max-w-xs">
@@ -37,15 +37,7 @@ export default function Tile({
   );
 }
 
-Tile.defaultProps = {
-  title: "Title",
-  description: "",
-  imageLink: "https://picsum.photos/",
-  altText: "",
-  tags: [],
-  metaText: "Action",
-  badgeText: "3.2",
-};
+Tile.defaultProps = {};
 
 Tile.propTypes = {
   title: PropTypes.string,

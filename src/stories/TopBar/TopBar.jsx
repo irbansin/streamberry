@@ -13,7 +13,6 @@ export const TopBar = ({
   onLogout,
   onCreateAccount,
   loginEnabled,
-  z,
 }) => (
   <div className="storybook-topbar">
     <div className="topbar-logo">

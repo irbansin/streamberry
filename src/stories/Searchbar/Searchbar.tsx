@@ -4,7 +4,12 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import PropTypes from "prop-types";
 
-export default function Searchbar({ initialSearchValue, search }) {
+export default function Searchbar({
+  initialSearchValue = "",
+  search = (value) => {
+    console.log(value);
+  },
+}) {
   const [searchValue, setSearchValue] = useState(initialSearchValue || "");
 
   function handleChange(event): void {
@@ -42,11 +47,6 @@ export default function Searchbar({ initialSearchValue, search }) {
     </div>
   );
 }
-
-Searchbar.defaultProps = {
-  initialSearchValue: "",
-  search: () => {},
-};
 
 Searchbar.propTypes = {
   initialSearchValue: PropTypes.string,
