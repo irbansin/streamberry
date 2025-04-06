@@ -175,6 +175,7 @@ export default function MovieListPage() {
                   setCurrentMovie(movie);
                   setShowDescription(true);
                 }}
+                key={i}
               >
                 <Tile
                   title={movie.title}
@@ -182,7 +183,6 @@ export default function MovieListPage() {
                   tags={movie.genre_ids.map((id: number) => genreMap[id])}
                   metaText={String(new Date(movie.release_date).getFullYear())}
                   badgeText={movie.vote_average}
-                  key={i}
                 ></Tile>
               </div>
             );

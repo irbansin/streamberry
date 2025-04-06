@@ -18,6 +18,7 @@
     background-color: $background-color;
     border: none;
     color: $foreground-color-light;
+    width: 100%;
     &:focus-visible {
       outline: none;
     }
