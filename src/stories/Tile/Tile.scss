@@ -1,17 +1,15 @@
 @import "../assets/styles/variables.scss";
 
 .tile {
-  max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   background-color: $background-color;
+  width: min-content;
   .tile__image {
-    width: 100%;
   }
   .tile__content {
-    width: 100%;
   }
 
   .tile__title {

@@ -47,9 +47,12 @@ export default function Tile({
 
 Tile.defaultProps = {
   title: "Title",
-  altText: "Image",
   description: "",
-  image: "https://via.placeholder.com/300x300",
+  imageLink: "https://picsum.photos/",
+  altText: "",
+  tags: [],
+  metaText: "Action",
+  badgeText: "N/A",
 };
 
 Tile.propTypes = {
