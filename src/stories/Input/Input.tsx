@@ -6,10 +6,10 @@ export default function Input({
   inputValue = "",
   placeholderText = "Type Something",
   change = (value: any) => {
-    console.log(value);
+    alert(value);
   },
   keyup = (value: any) => {
-    console.log(value);
+    alert(value);
   },
 }) {
   return (

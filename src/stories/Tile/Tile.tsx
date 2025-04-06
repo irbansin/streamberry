@@ -19,7 +19,7 @@ export default function Tile({
   clickAction = (e: any) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.target.innerText);
+    alert(e.target.innerText);
   },
 }) {
   let options = ["Edit", "Delete"];

@@ -9,6 +9,6 @@ export default {
 export const Default = {
   args: {
     initialSearchValue: "Harry Potter",
-    search: (value) => console.log(value),
+    search: (value) => alert(value),
   },
 };

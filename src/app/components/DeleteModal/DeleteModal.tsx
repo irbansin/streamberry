@@ -4,10 +4,10 @@ import { Button } from "../../../stories/Button/Button";
 
 export default function DeleteModal({
   handleConfirm = (e: any) => {
-    console.log(e.target.innerText);
+    alert(e.target.innerText);
   },
   handleCancel = (e: any) => {
-    console.log(e.target.innerText);
+    alert(e.target.innerText);
   },
 }) {
   return (

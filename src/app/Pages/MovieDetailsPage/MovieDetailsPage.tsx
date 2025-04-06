@@ -4,18 +4,20 @@ import Detail from "../../../stories/Detail/Detail";
 import { useParams } from "react-router-dom";
 
 export default function MovieDetailsPage() {
+  const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
+  const [genres, setGenres]: any = useState([]); // [id: string]: string
   const { id } = useParams();
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=1f54bd990f1cdfb230adb312546d765d`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCurrentMovie(data);
+        setGenres(data.genres.map((genre: any) => genre.name));
       });
-  }, []);
-  const [currentMovie, setCurrentMovie]: any = useState({}); // [id: string]: string
+  }, [id]);
   return (
     <div className={styles.movieDetail}>
       <Detail
@@ -26,7 +28,7 @@ export default function MovieDetailsPage() {
         secondaryTitle={String(
           new Date(currentMovie.release_date).getFullYear()
         )}
-        // tags={currentMovie.genre_ids.map((id: number) => genreMap[id])}
+        tags={genres}
       ></Detail>
     </div>
   );

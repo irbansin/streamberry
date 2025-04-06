@@ -59,8 +59,9 @@ export default function MovieListPage() {
       .then((response) => {
         response.filter((movie: any) => !movie.adult);
         setMovielist(response);
+        console.log(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
     getAllGenres()
       .then((response) => {
         setGenreList(response);
@@ -71,7 +72,7 @@ export default function MovieListPage() {
 
         setGenreMap(genreObj);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, []);
 
   function updateMovieList(genreId: number) {
@@ -79,7 +80,7 @@ export default function MovieListPage() {
       .then((response) => {
         setMovielist(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }
   function search(searchTerm: string) {
     if (searchTerm)
@@ -96,7 +97,6 @@ export default function MovieListPage() {
   function handleEllipsisClick(e: any) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(e.target.innerText);
     switch (e.target.innerText) {
       case "Edit":
         openEditModal();
@@ -110,10 +110,10 @@ export default function MovieListPage() {
   }
 
   function handleConfirm(e: any) {
-    console.log(e.target.innerText);
+    alert(e.target.innerText);
   }
   function handleCancel(e: any) {
-    console.log(e.target.innerText);
+    alert(e.target.innerText);
   }
   return (
     <div>
@@ -192,13 +192,12 @@ export default function MovieListPage() {
             let posterPath = movie.poster_path || movie.backdrop_path;
             if (!posterPath) return null;
             return (
-              <Link to={`/movie/${movie.id}`}>
+              <Link to={`/movie/${movie.id}`} key={index}>
                 {" "}
                 <div
                   onClick={() => {
                     setCurrentMovie(movie);
                   }}
-                  key={index}
                 >
                   <Tile
                     title={movie.title}

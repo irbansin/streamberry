@@ -8,7 +8,7 @@ import Input from "../Input/Input";
 export default function Searchbar({
   initialSearchValue = "",
   search = (value) => {
-    console.log(value);
+    alert(value);
   },
 }) {
   const [searchValue, setSearchValue] = useState(initialSearchValue || "");

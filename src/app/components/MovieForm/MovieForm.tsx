@@ -18,7 +18,6 @@ function handleReset(e: any) {
 }
 
 export default function MovieForm({ currentMovie }) {
-  console.log(currentMovie);
   const [title, setTitle] = useState(currentMovie.title);
   const [releaseDate, setReleaseDate] = useState(currentMovie.release_date);
   const [posterUrl, setMovieUrl] = useState(currentMovie.poster_path);
