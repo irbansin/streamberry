@@ -5,7 +5,7 @@ import React from "react";
 export default function Tab({ tab, isActive, selectTab }) {
   return (
     <div
-      className={`flex items-center justify-center px-1 w-fit h-full w-fit	
+      className={`flex items-center justify-center px-4 w-fit h-full 	max-w-max
       ${styles.tab} 
       ${isActive ? styles.active : ""}`}
       onClick={selectTab}

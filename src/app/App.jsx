@@ -22,6 +22,7 @@ function App() {
   useEffect(() => {
     getAllMovies()
       .then((response) => {
+        response.filter((movie) => !movie.adult);
         setMovielist(response);
       })
       .catch((error) => console.log(error));
