@@ -1,5 +1,7 @@
 import "./App.scss";
-import MovieListPage from "./Pages/MovieListPage.tsx";
+import React from "react";
+
+import MovieListPage from "./Pages/MovieListPage";
 
 function App() {
   return (

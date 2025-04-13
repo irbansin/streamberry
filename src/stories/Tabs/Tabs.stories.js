@@ -1,4 +1,4 @@
-import Tabs from "./Tabs.tsx";
+import Tabs from "./Tabs";
 
 export default {
   title: "Components/Tabs",

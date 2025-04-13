@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./Tile.scss";
-import { Tags } from "../Tags/Tags.tsx";
-import { Badge } from "../Badge/Badge.tsx";
+import { Tags } from "../Tags/Tags";
+import { Badge } from "../Badge/Badge";
 
 export default function Tile({
   title = "Title",

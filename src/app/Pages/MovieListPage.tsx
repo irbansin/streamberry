@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { TopBar } from "../../stories/TopBar/TopBar";
 
-import Searchbar from "../../stories/Searchbar/Searchbar.tsx";
-import Select from "../../stories/Select/Select.tsx";
-import Tabs from "../../stories/Tabs/Tabs.tsx";
-import Tile from "../../stories/Tile/Tile.tsx";
+import Searchbar from "../../stories/Searchbar/Searchbar";
+import Select from "../../stories/Select/Select";
+import Tabs from "../../stories/Tabs/Tabs";
+import Tile from "../../stories/Tile/Tile";
 
-import Detail from "../../stories/Detail/Detail.tsx";
+import Detail from "../../stories/Detail/Detail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 

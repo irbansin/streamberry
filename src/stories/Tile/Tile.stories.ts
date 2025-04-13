@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Tile from "./Tile.tsx";
+import Tile from "./Tile";
 
 const meta: Meta<typeof Tile> = {
   title: "Components/Tile",

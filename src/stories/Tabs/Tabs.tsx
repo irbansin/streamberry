@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import React from "react";
-import Tab from "./tab/tab.tsx";
+import Tab from "./tab/tab";
 import PropTypes from "prop-types";
 export default function Tabs({ tabsList, triggerFunction }) {
   let [activeTab, setActiveTab] = useState(0);

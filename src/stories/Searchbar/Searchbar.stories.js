@@ -1,4 +1,4 @@
-import Searchbar from "./Searchbar.tsx";
+import Searchbar from "./Searchbar";
 
 export default {
   component: Searchbar,
