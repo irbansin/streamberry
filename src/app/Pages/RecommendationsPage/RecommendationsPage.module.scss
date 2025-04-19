@@ -1,0 +1,22 @@
+.recommendationsPage {
+  height: 100vh;
+  background-color: #232323;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+}
+.recommendationsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

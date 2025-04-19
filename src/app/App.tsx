@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MovieDetailsPage from "./Pages/MovieDetailsPage/MovieDetailsPage";
+import RecommendationsPage from "./Pages/RecommendationsPage/RecommendationsPage";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/movie/:id",
     element: <MovieDetailsPage />,
+  },
+  {
+    path: "/recommendations",
+    element: <RecommendationsPage />,
   },
 ]);
 
