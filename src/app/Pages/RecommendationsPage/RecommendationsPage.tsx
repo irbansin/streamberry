@@ -152,13 +152,26 @@ export default function RecommendationsPage() {
         {recommendations.length > 0 && (
           <>
             <h2>Recommended Movies</h2>
-            <ul>
+            <div className={styles.recommendationsGrid}>
               {recommendations.map((rec) => (
-                <li key={rec.movieId}>
-                  <strong>{rec.title}</strong> <span style={{ color: '#aaa' }}>(Score: {rec.score})</span>
-                </li>
+                <div className={styles.recommendationCard} key={rec.movieId}>
+                  {rec.poster_path ? (
+                    <div className={styles.posterWrapper}>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w200${rec.poster_path}`}
+                        alt={rec.title}
+                        className={styles.poster}
+                      />
+                    </div>
+                  ) : null}
+                  <div className={styles.cardContent}>
+                    <div className={styles.recTitle}>{rec.title}</div>
+                    <div className={styles.recGenres}>{rec.genres || ''}</div>
+                    <div className={styles.recScore}>Score: <span>{rec.score}</span></div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </>
         )}
       </div>
