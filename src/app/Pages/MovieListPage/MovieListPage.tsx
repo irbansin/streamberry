@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Autocomplete, TopBar } from "cryll-ui";
 import { Select } from "cryll-ui";
@@ -27,6 +27,8 @@ export default function MovieListPage() {
   const [isMovieFormModalOpen, setIsMovieFormModalOpen] = useState(false);
   const [isDeleteFormModalOpen, setIsDeleteFormModalOpen] = useState(false);
   const [modalType, setModalType] = useState("add"); // [id: string]: string
+
+  const navigate = useNavigate();
 
   const openAddModal = () => {
     setCurrentMovie({});
@@ -137,15 +139,22 @@ export default function MovieListPage() {
       </Modal>
       <header className="z-10">
         <div className="background"></div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between px-8">
           <TopBar title="ZOLO Movies"></TopBar>
-
-          <Button
-            size="small"
-            click={() => openAddModal()}
-            label="Add Movie"
-            buttonStyle="secondary"
-          ></Button>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <Button
+              size="small"
+              click={() => openAddModal()}
+              label="Add Movie"
+              buttonStyle="secondary"
+            ></Button>
+            <Button
+              size="small"
+              click={() => navigate("/recommendations")}
+              label="Recommendations"
+              buttonStyle="primary"
+            ></Button>
+          </div>
         </div>
         <div className="search">
           <div className="title">Find Your Movies</div>
@@ -179,7 +188,6 @@ export default function MovieListPage() {
                   label: "Name",
                   value: "title.asc",
                 },
-
                 {
                   label: "Rating",
                   value: "vote_average.desc",

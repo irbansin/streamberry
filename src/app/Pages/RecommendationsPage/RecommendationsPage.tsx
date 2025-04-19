@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./RecommendationsPage.module.scss";
 import axios from "axios";
 import { Movie } from "../../models/Movie.interface";
@@ -22,6 +23,7 @@ export default function RecommendationsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   // Preprocess movie titles to lowercase for fast search
   const moviesWithLower = useMemo(() =>
@@ -97,6 +99,12 @@ export default function RecommendationsPage() {
 
   return (
     <div className={styles.recommendationsPage}>
+      <div className={styles.topbar}>
+        <div className={styles.topbarTitle}>Movie Recommender</div>
+        <button className={styles.topbarButton} onClick={() => navigate('/')}>
+          Home
+        </button>
+      </div>
       <h1>Recommendations</h1>
       <div className={styles.multiSelectWrapper} ref={dropdownRef}>
         <div className={styles.selectedMovies} onClick={handleDropdownToggle} tabIndex={0}>
