@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+/mock/node_modules
+/mock/package-lock.json
+
 # testing
 /coverage
 

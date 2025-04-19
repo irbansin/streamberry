@@ -1,12 +1,159 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import styles from "./RecommendationsPage.module.scss";
+import axios from "axios";
+import { Movie } from "../../models/Movie.interface";
 
-export default function ReommendationsPage() {
+function useDebouncedValue<T>(value: T, delay: number): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debounced;
+}
+
+export default function RecommendationsPage() {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [selectedMovieIds, setSelectedMovieIds] = useState<string[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 200);
+  const [recommendations, setRecommendations] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Preprocess movie titles to lowercase for fast search
+  const moviesWithLower = useMemo(() =>
+    movies.map((m: any) => ({ ...m, _lcTitle: m.title.toLowerCase() })), [movies]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/movies")
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .catch(() => setError("Failed to fetch movies."));
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Fast, debounced, limited search
+  const filteredMovies = useMemo(() => {
+    if (!debouncedSearchTerm) return moviesWithLower.filter((movie: any) => !selectedMovieIds.includes((movie.movieId || movie.id).toString())).slice(0, 30);
+    return moviesWithLower.filter(
+      (movie: any) =>
+        movie._lcTitle.includes(debouncedSearchTerm.toLowerCase()) &&
+        !selectedMovieIds.includes((movie.movieId || movie.id).toString())
+    ).slice(0, 30);
+  }, [moviesWithLower, debouncedSearchTerm, selectedMovieIds]);
+
+  const handleSelectMovie = (id: string) => {
+    setSelectedMovieIds((prev) => [...prev, id]);
+    setSearchTerm("");
+  };
+
+  const handleRemoveMovie = (id: string) => {
+    setSelectedMovieIds((prev) => prev.filter((mid) => mid !== id));
+  };
+
+  const handleDropdownToggle = () => {
+    setDropdownOpen((open) => !open);
+  };
+
+  const handleViewRecommendations = async () => {
+    setLoading(true);
+    setError(null);
+    setRecommendations([]);
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/recommendations_from_selection",
+        {
+          movie_ids: selectedMovieIds.map((id) => Number(id)),
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setRecommendations(response.data);
+    } catch (err) {
+      setError("Failed to fetch recommendations.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isButtonDisabled = selectedMovieIds.length === 0 || loading;
+
   return (
     <div className={styles.recommendationsPage}>
       <h1>Recommendations</h1>
-      <p>Here are some movie recommendations for you!</p>
-      <div className={styles.recommendationsList}></div>
+      <div className={styles.multiSelectWrapper} ref={dropdownRef}>
+        <div className={styles.selectedMovies} onClick={handleDropdownToggle} tabIndex={0}>
+          {selectedMovieIds.map((id) => {
+            const movie = movies.find((m: any) => ((m.movieId || m.id).toString()) === id);
+            return (
+              <span className={styles.selectedTag} key={id}>
+                {movie?.title}
+                <button className={styles.removeTag} onClick={(e) => { e.stopPropagation(); handleRemoveMovie(id); }}>&times;</button>
+              </span>
+            );
+          })}
+          <input
+            className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onFocus={() => setDropdownOpen(true)}
+            placeholder="Select movies..."
+            disabled={loading}
+          />
+        </div>
+        {dropdownOpen && filteredMovies.length > 0 && (
+          <div className={styles.dropdown}>
+            {filteredMovies.map((movie: any) => (
+              <div
+                key={movie.movieId || movie.id}
+                className={styles.dropdownItem}
+                onClick={() => handleSelectMovie((movie.movieId || movie.id).toString())}
+              >
+                {movie.title}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <button
+        className={isButtonDisabled ? styles.disabledButton : styles.primaryButton}
+        onClick={handleViewRecommendations}
+        disabled={isButtonDisabled}
+      >
+        {loading ? "Loading..." : "View Recommendations"}
+      </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className={styles.recommendationsList}>
+        {recommendations.length > 0 && (
+          <>
+            <h2>Recommended Movies</h2>
+            <ul>
+              {recommendations.map((rec) => (
+                <li key={rec.movieId}>
+                  <strong>{rec.title}</strong> <span style={{ color: '#aaa' }}>(Score: {rec.score})</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
       <p>Enjoy your movie time!</p>
     </div>
   );
