@@ -26,11 +26,14 @@ export default function RecommendationsPage() {
   const navigate = useNavigate();
 
   // Preprocess movie titles to lowercase for fast search
-  const moviesWithLower = useMemo(() =>
-    movies.map((m: any) => ({ ...m, _lcTitle: m.title.toLowerCase() })), [movies]);
+  const moviesWithLower = useMemo(
+    () => movies.map((m: any) => ({ ...m, _lcTitle: m.title.toLowerCase() })),
+    [movies]
+  );
 
   useEffect(() => {
-    axios.get("http://localhost:3001/movies")
+    axios
+      .get("http://localhost:3001/movies")
       .then((res) => {
         setMovies(res.data);
       })
@@ -39,7 +42,10 @@ export default function RecommendationsPage() {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     }
@@ -49,12 +55,20 @@ export default function RecommendationsPage() {
 
   // Fast, debounced, limited search
   const filteredMovies = useMemo(() => {
-    if (!debouncedSearchTerm) return moviesWithLower.filter((movie: any) => !selectedMovieIds.includes((movie.movieId || movie.id).toString())).slice(0, 30);
-    return moviesWithLower.filter(
-      (movie: any) =>
-        movie._lcTitle.includes(debouncedSearchTerm.toLowerCase()) &&
-        !selectedMovieIds.includes((movie.movieId || movie.id).toString())
-    ).slice(0, 30);
+    if (!debouncedSearchTerm)
+      return moviesWithLower
+        .filter(
+          (movie: any) =>
+            !selectedMovieIds.includes((movie.movieId || movie.id).toString())
+        )
+        .slice(0, 30);
+    return moviesWithLower
+      .filter(
+        (movie: any) =>
+          movie._lcTitle.includes(debouncedSearchTerm.toLowerCase()) &&
+          !selectedMovieIds.includes((movie.movieId || movie.id).toString())
+      )
+      .slice(0, 30);
   }, [moviesWithLower, debouncedSearchTerm, selectedMovieIds]);
 
   const handleSelectMovie = (id: string) => {
@@ -101,19 +115,33 @@ export default function RecommendationsPage() {
     <div className={styles.recommendationsPage}>
       <div className={styles.topbar}>
         <div className={styles.topbarTitle}>Movie Recommender</div>
-        <button className={styles.topbarButton} onClick={() => navigate('/')}>
+        <button className={styles.topbarButton} onClick={() => navigate("/")}>
           Home
         </button>
       </div>
       <h1>Recommendations</h1>
       <div className={styles.multiSelectWrapper} ref={dropdownRef}>
-        <div className={styles.selectedMovies} onClick={handleDropdownToggle} tabIndex={0}>
+        <div
+          className={styles.selectedMovies}
+          onClick={handleDropdownToggle}
+          tabIndex={0}
+        >
           {selectedMovieIds.map((id) => {
-            const movie = movies.find((m: any) => ((m.movieId || m.id).toString()) === id);
+            const movie = movies.find(
+              (m: any) => (m.movieId || m.id).toString() === id
+            );
             return (
               <span className={styles.selectedTag} key={id}>
                 {movie?.title}
-                <button className={styles.removeTag} onClick={(e) => { e.stopPropagation(); handleRemoveMovie(id); }}>&times;</button>
+                <button
+                  className={styles.removeTag}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemoveMovie(id);
+                  }}
+                >
+                  &times;
+                </button>
               </span>
             );
           })}
@@ -132,7 +160,9 @@ export default function RecommendationsPage() {
               <div
                 key={movie.movieId || movie.id}
                 className={styles.dropdownItem}
-                onClick={() => handleSelectMovie((movie.movieId || movie.id).toString())}
+                onClick={() =>
+                  handleSelectMovie((movie.movieId || movie.id).toString())
+                }
               >
                 {movie.title}
               </div>
@@ -141,7 +171,9 @@ export default function RecommendationsPage() {
         )}
       </div>
       <button
-        className={isButtonDisabled ? styles.disabledButton : styles.primaryButton}
+        className={
+          isButtonDisabled ? styles.disabledButton : styles.primaryButton
+        }
         onClick={handleViewRecommendations}
         disabled={isButtonDisabled}
       >
@@ -151,7 +183,7 @@ export default function RecommendationsPage() {
       <div className={styles.recommendationsList}>
         {recommendations.length > 0 && (
           <>
-            <h2>Recommended Movies</h2>
+            <h2 className={styles.recommendationsHeading}>Recommended Movies</h2>
             <div className={styles.recommendationsGrid}>
               {recommendations.map((rec) => (
                 <div className={styles.recommendationCard} key={rec.movieId}>
@@ -166,8 +198,10 @@ export default function RecommendationsPage() {
                   ) : null}
                   <div className={styles.cardContent}>
                     <div className={styles.recTitle}>{rec.title}</div>
-                    <div className={styles.recGenres}>{rec.genres || ''}</div>
-                    <div className={styles.recScore}>Score: <span>{rec.score}</span></div>
+                    <div className={styles.recGenres}>{rec.genres || ""}</div>
+                    <div className={styles.recScore}>
+                      Score: <span>{rec.score}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -175,7 +209,6 @@ export default function RecommendationsPage() {
           </>
         )}
       </div>
-      <p>Enjoy your movie time!</p>
     </div>
   );
 }
