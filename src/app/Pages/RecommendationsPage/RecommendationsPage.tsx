@@ -23,6 +23,7 @@ export default function RecommendationsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   // Preprocess movie titles to lowercase for fast search
@@ -44,7 +45,9 @@ export default function RecommendationsPage() {
     function handleClickOutside(event: MouseEvent) {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
       ) {
         setDropdownOpen(false);
       }
@@ -123,7 +126,7 @@ export default function RecommendationsPage() {
       <div className={styles.multiSelectWrapper} ref={dropdownRef}>
         <div
           className={styles.selectedMovies}
-          onClick={handleDropdownToggle}
+          onMouseDown={handleDropdownToggle}
           tabIndex={0}
         >
           {selectedMovieIds.map((id) => {
@@ -146,6 +149,7 @@ export default function RecommendationsPage() {
             );
           })}
           <input
+            ref={inputRef}
             className={styles.searchInput}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
