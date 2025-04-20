@@ -92,8 +92,9 @@ export default function RecommendationsPage() {
     setError(null);
     setRecommendations([]);
     try {
+      // Try real API first
       const response = await axios.post(
-        "http://localhost:3001/recommendations_from_selection",
+        "http://127.0.0.1:8000/recommendations_from_selection",
         {
           movie_ids: selectedMovieIds.map((id) => Number(id)),
         },
@@ -104,9 +105,43 @@ export default function RecommendationsPage() {
           },
         }
       );
-      setRecommendations(response.data);
+      if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+        setRecommendations(response.data);
+      } else {
+        // Fallback to dummy/mock data
+        const mockRes = await axios.post(
+          "http://localhost:3001/recommendations_from_selection",
+          {
+            movie_ids: selectedMovieIds.map((id) => Number(id)),
+          },
+          {
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setRecommendations(mockRes.data);
+      }
     } catch (err) {
-      setError("Failed to fetch recommendations.");
+      // Fallback to dummy/mock data on error
+      try {
+        const mockRes = await axios.post(
+          "http://localhost:3001/recommendations_from_selection",
+          {
+            movie_ids: selectedMovieIds.map((id) => Number(id)),
+          },
+          {
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setRecommendations(mockRes.data);
+      } catch (mockErr) {
+        setError("Failed to fetch recommendations from both main API and fallback.");
+      }
     } finally {
       setLoading(false);
     }
